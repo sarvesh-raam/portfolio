@@ -1,0 +1,12 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Local build files
+dist/
+build/
+node_modules/
