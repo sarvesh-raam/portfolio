@@ -3022,14 +3022,35 @@ a.skill-item:hover::after {
         flex-direction: column;
         gap: var(--space-2xl);
         padding: 0 var(--space-md);
+        align-items: center;
+        /* Force centering of all children */
+    }
+
+    .about-image-wrapper {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
     }
 
     .about-details {
         text-align: center;
+        width: 100%;
+        max-width: 100%;
     }
 
     .about-cards {
         justify-items: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    /* Center the education cards inside about-details */
+    .edu-split-card {
+        width: 100%;
+        max-width: 450px;
+        margin: 0 auto;
     }
 }
 
