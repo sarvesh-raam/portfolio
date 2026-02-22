@@ -675,14 +675,22 @@ span {
 /* Stable static wrapper allows the internal card to scale/expand relative to .about-content */
 .about-image-wrapper {
     position: relative;
-    /* Changed back to relative for button positioning */
     display: flex;
     justify-content: center;
     align-items: center;
     width: 320px;
-    height: 380px;
+    height: 420px;
     flex-shrink: 0;
     margin: 0 auto;
+    transition: all 0.4s ease;
+}
+
+@media (max-width: 480px) {
+    .about-image-wrapper {
+        width: 100%;
+        max-width: 300px;
+        height: 360px;
+    }
 }
 
 .about-image {
@@ -3004,18 +3012,52 @@ a.skill-item:hover::after {
    =================================== */
 
 @media (max-width: 900px) {
+    .hero-content {
+        flex-direction: column;
+        gap: var(--space-xl);
+        text-align: center;
+    }
 
-    .hero-content,
     .about-content {
-        gap: var(--space-lg);
+        flex-direction: column;
+        gap: var(--space-2xl);
         padding: 0 var(--space-md);
+    }
+
+    .about-details {
+        text-align: center;
+    }
+
+    .about-cards {
+        justify-items: center;
     }
 }
 
 @media (max-width: 768px) {
     .profile-image {
-        width: 280px;
-        height: 280px;
+        width: 240px;
+        height: 240px;
+    }
+
+    .hero-name {
+        font-size: 2.5rem;
+    }
+
+    .section {
+        padding: var(--space-2xl) 0;
+    }
+
+    .section-title {
+        margin-bottom: var(--space-lg);
+    }
+
+    .about-creative-card {
+        height: 380px;
+        max-width: 310px;
+    }
+
+    .code-line {
+        font-size: 0.65rem;
     }
 }
 
@@ -3028,10 +3070,29 @@ a.skill-item:hover::after {
         flex-direction: column;
         width: 100%;
         padding: 0 var(--space-md);
+        gap: 1rem;
     }
 
     .btn {
         width: 100%;
         text-align: center;
+        justify-content: center;
+    }
+
+    .about-creative-card {
+        height: 350px;
+        max-width: 290px;
+    }
+
+    .code-line {
+        font-size: 0.6rem;
+    }
+
+    .hero-name {
+        font-size: 2.25rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
     }
 }
