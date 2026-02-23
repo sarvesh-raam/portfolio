@@ -2908,6 +2908,10 @@ a.skill-item:hover::after {
 
     .quick-message-wrap {
         padding: 1.5rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        box-sizing: border-box;
     }
 }
 
@@ -3203,8 +3207,17 @@ a.skill-item:hover::after {
     }
 
     .contact-bar {
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100%;
+        max-width: 90%;
+    }
+
+    .quick-message-wrap {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100%;
+        max-width: 100%;
     }
 
     /* Fix Footer visibility */
@@ -3243,6 +3256,10 @@ a.skill-item:hover::after {
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 0 var(--space-md);
+    }
+
     .section {
         padding: var(--space-xl) 0;
     }
