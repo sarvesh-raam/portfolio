@@ -210,6 +210,7 @@ span {
     box-shadow:
         inset 0 2px 5px rgba(0, 0, 0, 0.1),
         0 4px 10px rgba(0, 0, 0, 0.05);
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* High-Fidelity Clouds (Two distinct pills) */
@@ -595,6 +596,13 @@ span {
     animation: bounce 2s infinite;
     cursor: pointer;
     z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .scroll-indicator {
+        display: none;
+        /* Hide on mobile to prevent overlapping */
+    }
 }
 
 /* ===================================
@@ -1121,19 +1129,28 @@ span {
 @media (max-width: 600px) {
     .edu-split-row {
         flex-direction: column;
+        align-items: center;
     }
 
     .edu-divider {
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(to right, transparent 0%, var(--color-border) 30%, var(--color-border) 70%, transparent 100%);
-        margin: 0.5rem 0;
+        width: 80%;
+        height: 1px;
+        background: var(--color-border);
+        margin: 1rem auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
     }
 
     .edu-divider-icon {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        position: static;
+        transform: none;
+        margin: 0;
+    }
+
+    .edu-half {
+        width: 100%;
     }
 }
 
@@ -1386,25 +1403,26 @@ span {
 
 @media (max-width: 600px) {
     .skills-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.4rem;
-        padding: 0 0.25rem;
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns for better visibility */
+        gap: 0.75rem;
+        padding: 0 1rem;
     }
 
     .skill-item {
-        padding: 0.5rem 0.25rem;
-        border-radius: 0.75rem;
-        min-height: 90px;
+        padding: 1rem 0.5rem;
+        border-radius: 1rem;
+        min-height: 110px;
     }
 
     .skill-logo {
-        width: 24px;
-        height: 24px;
+        width: 32px;
+        height: 32px;
     }
 
     .skill-item span {
-        font-size: 0.6rem;
-        line-height: 1.2;
+        font-size: 0.75rem;
+        line-height: 1.3;
     }
 }
 
