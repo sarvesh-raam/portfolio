@@ -1124,7 +1124,16 @@ span {
     }
 
     .edu-divider {
-        display: none;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(to right, transparent 0%, var(--color-border) 30%, var(--color-border) 70%, transparent 100%);
+        margin: 0.5rem 0;
+    }
+
+    .edu-divider-icon {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -1378,21 +1387,24 @@ span {
 @media (max-width: 600px) {
     .skills-grid {
         grid-template-columns: repeat(4, 1fr);
-        gap: 0.6rem;
-        padding: 0 0.5rem;
+        gap: 0.4rem;
+        padding: 0 0.25rem;
     }
 
     .skill-item {
-        padding: 0.75rem 0.5rem;
+        padding: 0.5rem 0.25rem;
+        border-radius: 0.75rem;
+        min-height: 90px;
     }
 
     .skill-logo {
-        width: 28px;
-        height: 28px;
+        width: 24px;
+        height: 24px;
     }
 
     .skill-item span {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
+        line-height: 1.2;
     }
 }
 
@@ -2012,14 +2024,51 @@ a.skill-item:hover::after {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-.repo-expand-item:hover .repo-expand-content {
-    max-height: 350px;
-    border-top: 1px solid #eee;
+/* For PC: Expand on Hover */
+@media (min-width: 769px) {
+    .repo-expand-item:hover .repo-expand-content {
+        max-height: 350px;
+        border-top: 1px solid #eee;
+    }
+
+    .repo-expand-item:hover .expand-icon-plus {
+        transform: rotate(45deg);
+        color: var(--color-text-primary);
+    }
 }
 
-.repo-expand-item:hover .expand-icon-plus {
-    transform: rotate(45deg);
-    color: var(--color-text-primary);
+/* For Mobile: Expansion and different behavior */
+@media (max-width: 768px) {
+    .repo-expand-item.active .repo-expand-content {
+        max-height: 600px;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .repo-expand-item.active .expand-icon-plus {
+        transform: rotate(45deg);
+        color: var(--color-text-primary);
+    }
+
+    .repo-expand-item:hover {
+        transform: none;
+        /* No shifting on mobile */
+    }
+
+    .repo-content-inner {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+
+    .repo-line-numbers {
+        display: none;
+        /* Clean up on mobile */
+    }
+
+    .repo-title-bar {
+        padding: 1.25rem 1.5rem;
+        gap: 1rem;
+    }
 }
 
 .repo-content-inner {
@@ -2102,6 +2151,38 @@ a.skill-item:hover::after {
 /* Match path color to the accent */
 .repo-path span {
     color: var(--color-text-primary) !important;
+}
+
+.repo-link-mini {
+    margin-left: auto;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.repo-link-mini:hover {
+    background: var(--color-text-primary);
+    color: var(--color-bg);
+}
+
+@media (max-width: 480px) {
+    .repo-link-mini {
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+
+    .repo-meta-mini {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
 }
 
 /* ===================================
@@ -2991,6 +3072,19 @@ a.skill-item:hover::after {
     gap: var(--space-lg);
     justify-content: center;
     margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+    /* Added for mobile */
+}
+
+@media (max-width: 600px) {
+    .footer-nav {
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .footer-nav a {
+        font-size: 0.85rem;
+    }
 }
 
 .footer-nav a {
@@ -3082,6 +3176,23 @@ a.skill-item:hover::after {
         width: 100%;
         max-width: 450px;
         margin: 0 auto;
+    }
+
+    /* Fix Contact centering */
+    .contact-section {
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-bar {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Fix Footer visibility */
+    .footer {
+        padding: var(--space-2xl) 0;
+        margin-top: 2rem;
     }
 }
 

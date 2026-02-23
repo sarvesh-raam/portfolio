@@ -276,7 +276,7 @@ function initBlockCursor(card) {
 // GitHub API Integration
 // ===================================
 
-const GITHUB_USERNAME = 'sarveshraam55';
+const GITHUB_USERNAME = 'sarvesh-raam';
 const GITHUB_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
 
 const languageColors = {
@@ -313,7 +313,7 @@ function createRepoCard(repo, index) {
     const num = (index + 1).toString().padStart(2, '0');
 
     return `
-        <div class="repo-expand-item" onclick="window.open('${repo.html_url}', '_blank')">
+        <div class="repo-expand-item" onclick="toggleRepoExpansion(this, event)">
             <div class="repo-title-bar">
                 <span class="repo-num">${num}</span>
                 <div class="repo-path">src/repos/<span>${repo.name.toLowerCase()}</span></div>
@@ -330,6 +330,7 @@ function createRepoCard(repo, index) {
                         <div class="repo-meta-mini">
                             ${repo.language ? `<span class="repo-lang"><span class="lang-dot" style="background-color: ${languageColor}"></span>${repo.language}</span>` : ''}
                             <span class="repo-date-mini">${updatedDate}</span>
+                            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="repo-link-mini" onclick="event.stopPropagation()">View on GitHub ↗</a>
                         </div>
                     </div>
                 </div>
@@ -338,9 +339,22 @@ function createRepoCard(repo, index) {
     `;
 }
 
+function toggleRepoExpansion(element, event) {
+    if (window.innerWidth <= 768) {
+        // Clear active from others
+        document.querySelectorAll('.repo-expand-item').forEach(item => {
+            if (item !== element) item.classList.remove('active');
+        });
+        element.classList.toggle('active');
+    } else {
+        // On PC, let hover handle CSS transition, but click opens link
+        window.open(element.querySelector('.repo-link-mini').href, '_blank');
+    }
+}
+
 function updateFooterYear() {
     const copyright = document.querySelector('.copyright');
     if (copyright) {
-        copyright.textContent = `Copyright © ${new Date().getFullYear()} Sarvesh Raam T K. All Rights Reserved.`;
+        copyright.innerHTML = `Copyright &copy; ${new Date().getFullYear()} Sarvesh Raam T K. All Rights Reserved.`;
     }
 }

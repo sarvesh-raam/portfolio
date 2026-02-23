@@ -54,7 +54,7 @@ Modify the case study section in `index.html` (lines ~135-165) with your own pro
 All colors are defined as CSS variables in `style.css` (lines 1-30). Change them to match your preference.
 
 ### GitHub Integration
-The site automatically fetches repositories from `https://github.com/sarveshraam55`. 
+The site automatically fetches repositories from `https://github.com/sarvesh-raam`. 
 To change the username, edit line 28 in `script.js`.
 
 ## 📞 Contact Information
