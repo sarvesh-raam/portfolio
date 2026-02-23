@@ -1129,23 +1129,25 @@ span {
 @media (max-width: 600px) {
     .edu-split-row {
         flex-direction: column;
-        align-items: center;
+        position: relative;
     }
 
     .edu-divider {
-        width: 80%;
-        height: 1px;
-        background: var(--color-border);
-        margin: 1rem auto;
+        width: 100%;
+        height: 0;
+        margin: 0;
+        position: relative;
+        z-index: 10;
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-shrink: 0;
     }
 
     .edu-divider-icon {
-        position: static;
-        transform: none;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
         margin: 0;
     }
 
