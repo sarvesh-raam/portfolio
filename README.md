@@ -2,6 +2,9 @@
 
 A premium, ultra-minimal, Apple-inspired portfolio website showcasing AI engineering work.
 
+<div align="center">
+  <img src="assets/portfolio-hq.png" alt="Portfolio Screenshot" width="800" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 20px 0;">
+</div>
 ## Quick Start
 
 ### Option 1: Open Directly (Simplest)
