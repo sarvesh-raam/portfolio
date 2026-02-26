@@ -2,7 +2,7 @@
 
 A premium, ultra-minimal, Apple-inspired portfolio website showcasing AI engineering work.
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Option 1: Open Directly (Simplest)
 Simply double-click `index.html` to open it in your default browser.
@@ -23,7 +23,7 @@ php -S localhost:8000
 
 Then open: `http://localhost:8000`
 
-## 📁 File Structure
+## File Structure
 
 ```
 portfolio/
@@ -33,7 +33,7 @@ portfolio/
 └── README.md       # This file
 ```
 
-## ✨ Features
+## Features
 
 - **Ultra-Clean Design**: Apple-inspired aesthetics with generous white space
 - **Smooth Animations**: Gentle fade-ins and hover effects
@@ -42,7 +42,7 @@ portfolio/
 - **Smart Contact**: All contact links work correctly (email, phone, WhatsApp, social)
 - **Performance Optimized**: Fast loading with lazy loading and efficient code
 
-## 🎨 Customization
+## Customization
 
 ### Update Projects
 Edit the project cards in `index.html` (lines ~85-130) to showcase your best work.
@@ -57,7 +57,7 @@ All colors are defined as CSS variables in `style.css` (lines 1-30). Change them
 The site automatically fetches repositories from `https://github.com/sarvesh-raam`. 
 To change the username, edit line 28 in `script.js`.
 
-## 📞 Contact Information
+## Contact Information
 
 All contact links are fully functional:
 - **Email**: Opens default mail client
@@ -66,7 +66,7 @@ All contact links are fully functional:
 - **GitHub**: Links to your profile
 - **LinkedIn**: Links to your profile
 
-## 🔧 Technical Details
+## Technical Details
 
 - **No Build Process**: Pure HTML, CSS, and JavaScript
 - **No Dependencies**: Everything works out of the box
@@ -74,13 +74,13 @@ All contact links are fully functional:
 - **Accessible**: ARIA labels and keyboard navigation support
 - **Cross-Browser**: Works on Chrome, Firefox, Safari, Edge
 
-## 📝 Notes
+## Notes
 
 - GitHub API has a rate limit of 60 requests/hour for unauthenticated requests
 - The site caches repository data to minimize API calls
 - All animations use hardware-accelerated CSS transforms for smooth performance
 
-## 🎯 Philosophy
+## Philosophy
 
 > "Calm, confident, and premium. Let the work speak for itself."
 
