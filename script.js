@@ -294,8 +294,8 @@ async function fetchGitHubRepos() {
         if (!response.ok) throw new Error('Failed to fetch repositories');
         const repos = await response.json();
         const selectedRepos = [
-            'College-Scholarships-Financial-Aid', 'Threat-Modeling-Project', 'STOCK-PREDICTION',
-            'Cat-vs.-Dog-Image-Classification-Using-SVM', 'Hand-Gesture-Recognition-for-Human-Computer-Interaction', 'TITANIC-CLASSIFICATION'
+            'ARIA', 'College-Scholarships-Financial-Aid', 'Explainable-AI-Research',
+            'Threat-Modeling-Project', 'STOCK-PREDICTION', 'Hand-Gesture-Recognition-for-Human-Computer-Interaction'
         ];
         const filteredRepos = repos.filter(repo => !repo.fork && !repo.archived && selectedRepos.includes(repo.name))
             .sort((a, b) => selectedRepos.indexOf(a.name) - selectedRepos.indexOf(b.name));
