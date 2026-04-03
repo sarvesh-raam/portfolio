@@ -1,4 +1,4 @@
-﻿/* ===================================
+/* ===================================
    Clean Minimal Design System
    =================================== */
 
@@ -1675,6 +1675,15 @@ a.skill-item:hover::after {
     /* Keep original colors for Renault */
 }
 
+/* Specific adjustment for Murugappa Group photo-logo */
+.exp-header-tpi .exp-logo-img {
+    filter: none;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+
 .exp-logo-img:hover {
     transform: scale(1.1);
 }
@@ -1782,6 +1791,21 @@ a.skill-item:hover::after {
     letter-spacing: 0.01em;
 }
 
+.exp-featured-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 1.25rem;
+    margin-top: 1.25rem;
+    border: 1px solid var(--color-border);
+    transition: transform 0.4s ease;
+}
+
+.exp-featured-img:hover {
+    transform: scale(1.02);
+}
+
+
 @media (max-width: 768px) {
     .exp-cards-grid {
         grid-template-columns: 1fr;
@@ -1870,6 +1894,11 @@ a.skill-item:hover::after {
 .project-header-stock {
     background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
 }
+
+.project-header-finsense {
+    background: linear-gradient(135deg, #7C3AED 0%, #06B6D4 100%);
+}
+
 
 .project-header::before {
     content: '';
@@ -2224,12 +2253,21 @@ a.skill-item:hover::after {
 
 .certs-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 3rem;
-    max-width: 560px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
 }
+
+@media (max-width: 992px) {
+    .certs-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+}
+
+
 
 .cert-card {
     border-radius: 1.5rem;
@@ -2270,6 +2308,12 @@ a.skill-item:hover::after {
     background: linear-gradient(135deg, #00589B 0%, #0070D2 100%);
     color: #fff;
 }
+
+.cert-header-sap {
+    background: linear-gradient(135deg, #0080FF 0%, #004C99 100%);
+    color: #fff;
+}
+
 
 .cert-badge {
     width: 64px;
@@ -2333,6 +2377,12 @@ a.skill-item:hover::after {
     background: #00D4AA;
     color: #003D2F;
 }
+
+.cert-ribbon-sap {
+    background: #FFD700;
+    color: #4A3B00;
+}
+
 
 /* --- Card Body --- */
 .cert-card-body {
@@ -2433,6 +2483,15 @@ a.skill-item:hover::after {
 .cert-btn-sf:hover {
     background: #005FB2;
 }
+
+.cert-btn-sap {
+    background: #004C99;
+}
+
+.cert-btn-sap:hover {
+    background: #003366;
+}
+
 
 /* Verify button — teal/green outline variant */
 .cert-btn-verify {

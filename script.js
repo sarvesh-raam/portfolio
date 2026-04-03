@@ -294,7 +294,7 @@ async function fetchGitHubRepos() {
         if (!response.ok) throw new Error('Failed to fetch repositories');
         const repos = await response.json();
         const selectedRepos = [
-            'ARIA', 'scholarship-portal', 'explainable.ai', 'portfolio'
+            'ARIA', 'scholarship-portal', 'explainable.ai', 'portfolio', 'flappybird-RL', 'BroLift'
         ];
         const filteredRepos = repos.filter(repo => !repo.fork && !repo.archived && selectedRepos.includes(repo.name))
             .sort((a, b) => selectedRepos.indexOf(a.name) - selectedRepos.indexOf(b.name));
