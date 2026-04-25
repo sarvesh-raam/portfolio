@@ -553,6 +553,21 @@ span {
     font-size: 0.875rem;
 }
 
+.btn-sponsor {
+    border: 1.5px solid #db61a2;
+    color: #db61a2;
+    background: transparent;
+}
+
+.btn-sponsor:hover {
+    background: #db61a2;
+    color: #ffffff;
+}
+
+.sponsor-segment:hover {
+    background: rgba(219, 97, 162, 0.1) !important;
+}
+
 /* ===================================
    Scroll Indicator
    =================================== */
@@ -1401,6 +1416,32 @@ span {
 /* ===================================
    Skills Section
    =================================== */
+
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.skill-category {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.category-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-align: left;
+    padding-left: 1rem;
+    border-left: 3px solid var(--color-text-primary);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
 
 .skills-grid {
     display: grid;
