@@ -57,6 +57,8 @@ collections:
               - { name: email, label: Email, widget: string }
               - { name: linkedin, label: LinkedIn URL, widget: string }
               - { name: github, label: GitHub URL, widget: string }
+              - { name: resume, label: 'Resume (path or URL, e.g. assets/Resume.pdf)', widget: string, required: false }
+              - { name: sponsor, label: Sponsor / support link, widget: string, required: false }
           - { name: assistantUrl, label: AI assistant URL, widget: string, required: false, hint: 'Your Cloudflare Worker address (see assistant/README.md). Leave empty to hide the "Ask my assistant" box.' }
           - { name: typing, label: 'Hero "I build …" phrases', widget: list, field: { name: phrase, label: Phrase, widget: string } }
           - { name: cardSkills, label: Skills in profile.json card, widget: list, field: { name: skill, label: Skill, widget: string } }

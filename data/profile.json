@@ -19,7 +19,9 @@
   "contact": {
     "email": "sarveshraam5@gmail.com",
     "linkedin": "https://www.linkedin.com/in/sarveshraam/",
-    "github": "https://github.com/sarvesh-raam"
+    "github": "https://github.com/sarvesh-raam",
+    "resume": "assets/Sarvesh Raam T K Resume.pdf",
+    "sponsor": "https://github.com/sponsors/sarvesh-raam"
   },
   "assistantUrl": "https://ask-sarvesh.sarvesh-raam.workers.dev",
   "typing": [
