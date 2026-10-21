@@ -21,7 +21,7 @@
     "linkedin": "https://www.linkedin.com/in/sarveshraam/",
     "github": "https://github.com/sarvesh-raam"
   },
-  "assistantUrl": "",
+  "assistantUrl": "https://ask-sarvesh.sarvesh-raam.workers.dev",
   "typing": [
     "Agentic AI Systems",
     "RAG Pipelines",
