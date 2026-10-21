@@ -148,7 +148,8 @@ function buildFacts(data, html) {
     lines.push('', '## Internships');
     for (const e of visible(data.experience, 'experience')) {
         const when = `${e.start || '?'} to ${e.end || 'present'}`;
-        lines.push(`- ${e.role} at ${e.company} (${e.location || ''}; ${when}).${e.nda ? ' Work is under NDA.' : ''}`);
+        const extras = [e.nda && 'Work is under NDA.', e.certificate && 'Internship certificate shown on the site.'].filter(Boolean).join(' ');
+        lines.push(`- ${e.role} at ${e.company} (${e.location || ''}; ${when}).${extras ? ` ${extras}` : ''}`);
         for (const b of e.bullets || []) lines.push(`  * ${plain(b)}`);
         if (e.tags?.length) lines.push(`  Tools: ${e.tags.join(', ')}`);
     }
@@ -174,7 +175,7 @@ function buildFacts(data, html) {
 
     lines.push('', '## Achievements and leadership');
     for (const a of visible(data.achievements, 'achievements')) {
-        const detail = [a.org, a.date, fill(a.text)].filter(Boolean).join('; ');
+        const detail = [a.org, a.date, fill(a.text), a.certificate && 'certificate shown on the site'].filter(Boolean).join('; ');
         lines.push(`- ${a.label}: ${fill(a.title)}${detail ? ` (${detail})` : ''}`);
     }
 
