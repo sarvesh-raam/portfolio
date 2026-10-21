@@ -1,0 +1,166 @@
+{
+  "certifications": [
+    {
+      "title": "Agentforce Specialist",
+      "titleUrl": "https://trailheadacademy.salesforce.com/certificate/exam-agentforce-specialist---AI-201",
+      "issuer": "Salesforce",
+      "type": "Professional Certification",
+      "ribbon": "CERTIFIED",
+      "theme": "sf",
+      "logo": "assets/salesforce-logo-sm.png",
+      "meta": [
+        {
+          "label": "Issued By",
+          "value": "Salesforce"
+        },
+        {
+          "label": "Date",
+          "value": "December 2025"
+        },
+        {
+          "label": "Credential ID",
+          "value": "#7293422"
+        }
+      ],
+      "tags": [
+        "AI Agents",
+        "Salesforce",
+        "Agentforce"
+      ],
+      "primaryLabel": "View Certificate",
+      "primaryUrl": "assets/certificate-agentforce.pdf",
+      "verifyUrl": "https://sforce.co/verifycerts",
+      "visible": true
+    },
+    {
+      "title": "SAP Generative AI Developer",
+      "titleUrl": "https://www.credly.com/badges/be7b4274-4050-4ae4-8a75-9980f78f52e0",
+      "issuer": "SAP",
+      "type": "Professional Certification",
+      "ribbon": "CERTIFIED",
+      "theme": "sap",
+      "logo": "assets/SAP_2011_logo.svg.png",
+      "meta": [
+        {
+          "label": "Issued By",
+          "value": "SAP"
+        },
+        {
+          "label": "Date",
+          "value": "March 2026"
+        },
+        {
+          "label": "Credential ID",
+          "value": "#be7b4274"
+        }
+      ],
+      "tags": [
+        "Generative AI",
+        "SAP Business Technology Platform",
+        "AI Development"
+      ],
+      "primaryLabel": "View Certificate",
+      "primaryUrl": "assets/SAP2024Certification20260319-31-hd50w5.pdf",
+      "verifyUrl": "https://www.credly.com/badges/be7b4274-4050-4ae4-8a75-9980f78f52e0",
+      "visible": true
+    },
+    {
+      "title": "Data Analytics Essentials",
+      "titleUrl": "https://www.netacad.com/courses/data-analytics-essentials?courseLang=en-US",
+      "issuer": "Cisco Networking Academy",
+      "type": "Professional Credential",
+      "ribbon": "VERIFIED",
+      "theme": "cisco",
+      "logo": "",
+      "meta": [
+        {
+          "label": "Issued By",
+          "value": "Cisco"
+        },
+        {
+          "label": "Date",
+          "value": "July 2026"
+        },
+        {
+          "label": "Credential ID",
+          "value": "#d75d0436"
+        }
+      ],
+      "tags": [
+        "Data Analytics",
+        "Data Cleaning",
+        "SQL & Python",
+        "Cisco"
+      ],
+      "primaryLabel": "View Certificate",
+      "primaryUrl": "assets/certificates/cisco-data-analytics-essentials.pdf",
+      "verifyUrl": "https://www.credly.com/badges/02f0522f-68b3-4f4a-8128-bf2ee7c042ea",
+      "visible": true
+    },
+    {
+      "title": "Introduction to Modern AI",
+      "titleUrl": "https://www.netacad.com/courses/introduction-to-modern-ai?courseLang=en-US",
+      "issuer": "Cisco Networking Academy",
+      "type": "Professional Credential",
+      "ribbon": "VERIFIED",
+      "theme": "cisco",
+      "logo": "",
+      "meta": [
+        {
+          "label": "Issued By",
+          "value": "Cisco"
+        },
+        {
+          "label": "Date",
+          "value": "July 2026"
+        },
+        {
+          "label": "Credential ID",
+          "value": "#610f60b1"
+        }
+      ],
+      "tags": [
+        "Modern AI",
+        "Machine Learning",
+        "Neural Networks",
+        "Cisco"
+      ],
+      "primaryLabel": "View Certificate",
+      "primaryUrl": "assets/certificates/cisco-intro-modern-ai.pdf",
+      "verifyUrl": "https://www.credly.com/badges/41825653-ab2d-4a5a-87a2-8debc2e7b2d9",
+      "visible": true
+    },
+    {
+      "title": "ISC2 Candidate Status",
+      "titleUrl": "",
+      "issuer": "ISC2",
+      "type": "Candidate Designation",
+      "ribbon": "ACTIVE",
+      "theme": "isc2",
+      "logo": "",
+      "meta": [
+        {
+          "label": "Issued By",
+          "value": "ISC2"
+        },
+        {
+          "label": "Validity",
+          "value": "Dec 2025 – Dec 2026"
+        },
+        {
+          "label": "Program",
+          "value": "Global Security"
+        }
+      ],
+      "tags": [
+        "Cybersecurity",
+        "Information Security",
+        "ISC2 Community"
+      ],
+      "primaryLabel": "Learn More",
+      "primaryUrl": "https://www.isc2.org/",
+      "verifyUrl": "",
+      "visible": true
+    }
+  ]
+}

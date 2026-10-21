@@ -1,0 +1,71 @@
+{
+  "building": [
+    {
+      "name": "EchoCrypt",
+      "description": "End-to-end encrypted chat using Diffie-Hellman key exchange. Only ciphertext stored. Redis Pub/Sub for real-time delivery.",
+      "stack": [
+        "Socket.io",
+        "MongoDB",
+        "Redis",
+        "DH Crypto"
+      ],
+      "repo": "https://github.com/sarvesh-raam/echo-crypt",
+      "visible": true
+    },
+    {
+      "name": "SnapURL",
+      "description": "URL shortener with JWT auth and rich analytics — country, device, referrer tracking. PostgreSQL + Redis backend.",
+      "stack": [
+        "Node.js",
+        "PostgreSQL",
+        "Redis",
+        "JWT"
+      ],
+      "repo": "https://github.com/sarvesh-raam/snap-url",
+      "visible": true
+    },
+    {
+      "name": "SplitFast",
+      "description": "Expense splitter with graph-based debt minimization, idempotent webhooks, and WebSocket live balance updates.",
+      "stack": [
+        "Razorpay",
+        "WebSockets",
+        "Graph Algo"
+      ],
+      "repo": "https://github.com/sarvesh-raam/splitfast",
+      "visible": true
+    },
+    {
+      "name": "ResuMatch",
+      "description": "PDF resume parser with semantic similarity matching, skill-gap explanations, and ranked JD alignment scoring.",
+      "stack": [
+        "PDF Parsing",
+        "Semantic AI",
+        "Python"
+      ],
+      "repo": "https://github.com/sarvesh-raam/resumatch",
+      "visible": true
+    },
+    {
+      "name": "PulseOps",
+      "description": "Kubernetes-deployed microservices platform with Prometheus/Grafana observability and full GitHub Actions CI/CD pipeline.",
+      "stack": [
+        "Kubernetes",
+        "Prometheus",
+        "Grafana",
+        "CI/CD"
+      ],
+      "repo": "https://github.com/sarvesh-raam/pulseops",
+      "visible": true
+    },
+    {
+      "name": "CodeSynq",
+      "description": "Real-time collaborative code editor. Early development — details coming soon.",
+      "stack": [
+        "Collaborative Editing"
+      ],
+      "repo": "https://github.com/sarvesh-raam/codesynq",
+      "visible": true
+    }
+  ]
+}

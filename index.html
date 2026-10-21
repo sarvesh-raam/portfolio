@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description"
         content="Sarvesh Raam T K - B.Tech Artificial Intelligence student at SRM University. Building real AI systems and solving meaningful problems.">
     <meta property="og:title" content="Sarvesh Raam T K - AI Engineer">
@@ -12,15 +12,31 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sarvesh-raam.github.io/portfolio/">
     <meta property="og:image" content="https://sarvesh-raam.github.io/portfolio/assets/portfolio-og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sarvesh Raam T K - AI Engineer">
+    <meta name="twitter:image" content="https://sarvesh-raam.github.io/portfolio/assets/portfolio-og.png">
+    <link rel="canonical" href="https://sarvesh-raam.github.io/portfolio/">
 
     <title>Sarvesh Raam T K - AI Engineer</title>
+
+    <!-- Apply saved / system theme before first paint to avoid a light-mode flash -->
+    <script>
+        (function () {
+            var theme = 'light';
+            try {
+                theme = localStorage.getItem('theme') ||
+                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            } catch (e) { }
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&family=Outfit:wght@400;600;700;800&family=Fira+Code:wght@300;400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@300;400;500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=4.9">
 
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -28,29 +44,67 @@
 </head>
 
 <body>
-    <!-- Fixed Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
+    <!-- Fixed Navigation: Liquid Glass pill (links on desktop, logo + theme on phones) -->
+    <nav class="navbar" aria-label="Primary">
+        <div class="nav-container glass" data-liquid-glass>
             <a href="#hero" class="nav-logo">
                 <span class="logo-prompt">~/</span>sarvesh<span class="logo-cursor">_</span>
             </a>
-            <div class="nav-links">
+            <div class="nav-links" id="nav-links">
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
                 <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
-                <a href="#github">GitHub</a>
+                <a href="#more-projects">More</a>
                 <a href="#certifications">Certifications</a>
+                <a href="#achievements">Achievements</a>
+                <a href="#building">Building</a>
                 <a href="#contact">Contact</a>
-                <button id="theme-toggle" class="theme-switch" aria-label="Toggle Dark Mode">
-                    <div class="switch-handle"></div>
-                </button>
             </div>
+            <button id="theme-toggle" class="theme-switch" aria-label="Toggle Dark Mode">
+                <div class="switch-handle"></div>
+            </button>
         </div>
     </nav>
 
+    <!-- Phones & tablets: iOS-style floating tab bar -->
+    <nav class="tab-bar glass" aria-label="Sections" data-liquid-glass>
+        <span class="tab-lens" aria-hidden="true"></span>
+        <a href="#hero" class="tab-item" data-tab="hero">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>
+            <span>Home</span>
+        </a>
+        <a href="#experience" class="tab-item" data-tab="experience">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            <span>Work</span>
+        </a>
+        <a href="#projects" class="tab-item" data-tab="projects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+            <span>Projects</span>
+        </a>
+        <a href="#contact" class="tab-item" data-tab="contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <span>Contact</span>
+        </a>
+        <button type="button" class="tab-item" id="tab-more" data-tab="more" aria-expanded="false" aria-controls="tab-sheet">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+            <span>More</span>
+        </button>
+    </nav>
+
+    <div class="tab-sheet glass" id="tab-sheet" data-liquid-glass hidden>
+        <a href="#about" data-sheet="about">About</a>
+        <a href="#skills" data-sheet="skills">Skills</a>
+        <a href="#more-projects" data-sheet="more-projects">More Projects</a>
+        <a href="#certifications" data-sheet="certifications">Certifications</a>
+        <a href="#achievements" data-sheet="achievements">Achievements</a>
+        <a href="#building" data-sheet="building">Currently Building</a>
+    </div>
+
+    <main>
     <!-- Hero Section -->
     <section id="hero" class="hero">
+        <canvas id="hero-canvas" class="hero-canvas"></canvas>
         <div class="container">
             <div class="hero-content">
                 <div class="profile-image-wrapper">
@@ -58,8 +112,9 @@
                 </div>
                 <div class="hero-text">
                     <p class="hero-greeting">Hello, I'm</p>
-                    <h1 class="hero-name">Sarvesh Raam T K</h1>
-                    <p class="hero-title">B.Tech Artificial Intelligence</p>
+                    <h1 class="hero-name">Sarvesh Raam T&nbsp;K</h1>
+                    <p class="hero-title">B.Tech AI &middot; SRM University</p>
+                    <p class="hero-subtitle">I build <span id="hero-typing" class="hero-typing-text">Agentic AI Systems</span><span class="hero-typing-cursor">|</span></p>
 
                     <div class="hero-buttons">
                         <a href="assets/Sarvesh Raam T K Resume.pdf" class="btn btn-outline" download>Download
@@ -84,10 +139,19 @@
                             </svg>
                         </a>
                     </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat"><span class="hero-stat-num" data-target="3">3</span><span class="hero-stat-lbl">Internships</span></div>
+                        <span class="hero-stat-sep">·</span>
+                        <div class="hero-stat"><span class="hero-stat-num" data-target="9">9</span><span class="hero-stat-lbl">Projects</span></div>
+                        <span class="hero-stat-sep">·</span>
+                        <div class="hero-stat"><span class="hero-stat-num" data-target="206">206</span><span class="hero-stat-lbl">LeetCode</span></div>
+                        <span class="hero-stat-sep">·</span>
+                        <div class="hero-stat"><span class="hero-gpa-stat" data-field="cgpa">8.24</span><span class="hero-stat-lbl">CGPA</span></div>
+                    </div>
                 </div>
             </div>
         </div>
-        <a href="#about" class="scroll-indicator">
+        <a href="#about" class="scroll-indicator" aria-label="Scroll to About">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
@@ -148,13 +212,13 @@
                                     class="code-colon">:</span> <span class="code-string">"B.Tech AI (SRM) + BS DS
                                     (IITM)"</span><span class="code-comma">,</span></div>
                             <div class="code-line"><span class="code-key">"gpa"</span><span class="code-colon">:</span>
-                                <span class="code-number">8.1</span><span class="code-comma">,</span>
+                                <span class="code-number">8.24</span><span class="code-comma">,</span>
                             </div>
                             <div class="code-line"><span class="code-key">"internships"</span><span
-                                    class="code-colon">:</span> <span class="code-number">2</span><span
+                                    class="code-colon">:</span> <span class="code-number">3</span><span
                                     class="code-comma">,</span></div>
                             <div class="code-line"><span class="code-key">"projects"</span><span
-                                    class="code-colon">:</span> <span class="code-number">6</span><span
+                                    class="code-colon">:</span> <span class="code-number">9</span><span
                                     class="code-comma">,</span></div>
                             <div class="code-line"><span class="code-key">"skills"</span><span
                                     class="code-colon">:</span> <span class="code-bracket">[</span></div>
@@ -201,9 +265,9 @@
                                     class="edu-half edu-half-srm">
                                     <img src="assets/srm-logo.webp" alt="SRM University" class="edu-logo" />
                                     <div class="edu-info">
-                                        <span class="edu-badge edu-badge-srm">B.Tech &middot; AI</span>
-                                        <h4 class="edu-name">SRM University</h4>
-                                        <p class="edu-detail">GPA 8.1 &nbsp;&middot;&nbsp; 2023&ndash;2027</p>
+                                        <span class="edu-badge edu-badge-srm" data-field="srm.degree">B.Tech &middot; AI</span>
+                                        <h3 class="edu-name" data-field="srm.name">SRM University</h3>
+                                        <p class="edu-detail">CGPA <span data-field="cgpa">8.24</span> &nbsp;&middot;&nbsp; <span class="nowrap" data-field="srm.years">2023&ndash;2027</span></p>
                                     </div>
                                 </a>
                                 <!-- Divider -->
@@ -211,23 +275,48 @@
                                 <!-- IITM Half -->
                                 <a href="https://study.iitm.ac.in/ds/" target="_blank" rel="noopener noreferrer"
                                     class="edu-half edu-half-iitm">
-                                    <img src="assets/iit-madras-logo.png" alt="IIT Madras" class="edu-logo" />
+                                    <img src="assets/iit-madras-logo-sm.png" alt="IIT Madras" class="edu-logo" />
                                     <div class="edu-info">
-                                        <span class="edu-badge edu-badge-iitm">BS &middot; Data Science</span>
-                                        <h4 class="edu-name">IIT Madras</h4>
-                                        <p class="edu-detail">Foundation Level &nbsp;&middot;&nbsp; In Progress</p>
+                                        <span class="edu-badge edu-badge-iitm" data-field="iitm.degree">BS &middot; Data Science</span>
+                                        <h3 class="edu-name" data-field="iitm.name">IIT Madras</h3>
+                                        <p class="edu-detail"><span class="nowrap" data-field="iitm.level">Foundation Level</span> &nbsp;&middot;&nbsp; <span class="nowrap" data-field="iitm.status">In Progress</span></p>
                                     </div>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="about-text">
-                        <p>B.Tech student in Artificial Intelligence at SRM University, also pursuing BS Data Science at IIT Madras. I specialize in building Agentic AI systems, Automated RAG pipelines, and high-performance industrial simulations. With experience at Renault Nissan and Tube Products of India, I bridge the gap between complex AI research and practical industrial applications. My approach: understand the problem deeply, build autonomous agentic solutions, and ensure transparency through Explainable AI. Always curious, always building.</p>
+                        <p data-field="about">B.Tech student in Artificial Intelligence at SRM University, also pursuing BS Data Science at IIT Madras. I specialize in building Agentic AI systems, Automated RAG pipelines, and high-performance industrial simulations. With internships at Renault Nissan, Double Devs, and Tube Products of India, I bridge the gap between complex AI research and practical industrial applications. My approach: understand the problem deeply, build autonomous agentic solutions, and ensure transparency through Explainable AI. Always curious, always building.</p>
                     </div>
                 </div>
             </div>
+            <!-- "Ask my assistant": shown only when profile.assistantUrl is set (Cloudflare Worker in /assistant) -->
+            <div class="ask-card" id="ask-card" hidden>
+                <div class="ask-head">
+                    <span class="ask-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+                    </span>
+                    <div>
+                        <h3 class="ask-title">Ask my assistant</h3>
+                        <p class="ask-sub">An AI that knows only what's on this site</p>
+                    </div>
+                </div>
+                <div class="ask-log" id="ask-log" aria-live="polite"></div>
+                <div class="ask-suggestions" id="ask-suggestions">
+                    <button type="button">What did he build at Renault?</button>
+                    <button type="button">Tell me about CallDojo</button>
+                    <button type="button">What's his tech stack?</button>
+                </div>
+                <form class="ask-form" id="ask-form">
+                    <input id="ask-input" type="text" maxlength="300" autocomplete="off" placeholder="Ask about his work…" aria-label="Your question" />
+                    <button type="submit" class="ask-send" aria-label="Send question">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                    </button>
+                </form>
+                <p class="ask-note">AI answers can be wrong. The sections below are the source of truth.</p>
+            </div>
         </div>
-        <a href="#skills" class="scroll-indicator">
+        <a href="#skills" class="scroll-indicator" aria-label="Scroll to Skills">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
@@ -258,16 +347,18 @@
                             <span>TypeScript</span>
                         </a>
                         <div class="skill-item skill-no-link">
-                            <svg viewBox="0 0 24 24" fill="#007396" class="skill-logo">
-                                <path d="M12.986 2.457c-.12.008-.246.024-.37.05a.434.434 0 0 0-.332.338.435.435 0 0 0 .341.517c.563.111.905.436.905.867 0 .42-.32.748-.867.868a.434.434 0 0 0-.341.516.434.434 0 0 0 .341.517c.563.111.905.436.905.867s-.342.756-.905.867a.434.434 0 0 0-.341.517c.07.24.323.38.563.308 1.057-.206 1.706-.82 1.706-1.692 0-.872-.649-1.486-1.706-1.692-.563-.111-.905-.436-.905-.867s.342-.756.905-.867c.563-.111.905-.436.905-.867s-.342-.756-.905-.867c-.035-.008-.073-.012-.112-.014zM4.908 4.792a1.302 1.302 0 0 0-.441.06c-.66.241-1.077.94-1.01 1.637.06.602.483 1.132 1.057 1.328a1.3 1.3 0 0 0 .42.06c.66-.01 1.23-.46 1.41-1.1s-.04-1.32-.54-1.71c-.24-.18-.59-.28-.89-.28zM12 7.5a4.5 4.5 0 0 0-4.5 4.5 4.5 4.5 0 0 0 4.5 4.5 4.5 4.5 0 0 0 4.5-4.5A4.5 4.5 0 0 0 12 7.5zm0 1.5a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3zM4.5 15.5c-1.105 0-2 .895-2 2s.895 2 2 2 2-.895 2-2-.895-2-2-2z" />
-                            </svg>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/java/java-original.svg" alt="" class="skill-logo" loading="lazy" width="48" height="48">
                             <span>Java</span>
                         </div>
                         <div class="skill-item skill-no-link">
-                            <svg viewBox="0 0 24 24" fill="#00599C" class="skill-logo">
-                                <path d="M22.5 10.5h-2.25V8.25h-1.5V10.5h-2.25v1.5h2.25v2.25h1.5V12h2.25v-1.5zm-11.25 1.5v3.75h3.75V12h-3.75zm-3 0v3.75h1.5V12h-1.5zM2.25 10.5v3.75H6V12H3.75v-1.5H6V9H2.25v1.5zm4.5-3.75h1.5V12h-1.5V6.75zm3 0h1.5V12h-1.5V6.75zm3 0h1.5V12h-1.5V6.75z" />
-                            </svg>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/cplusplus/cplusplus-original.svg" alt="" class="skill-logo" loading="lazy" width="48" height="48">
                             <span>C++</span>
+                        </div>
+                        <div class="skill-item skill-no-link">
+                            <svg viewBox="0 0 24 24" fill="#00758F" class="skill-logo">
+                                <path d="M12 3C7.58 3 4 4.79 4 7v10c0 2.21 3.59 4 8 4s8-1.79 8-4V7c0-2.21-3.58-4-8-4zm6 14c0 .55-2.69 2-6 2s-6-1.45-6-2v-2.23c1.61.78 3.72 1.23 6 1.23s4.39-.45 6-1.23V17zm0-4.55c-1.3.95-3.58 1.55-6 1.55s-4.7-.6-6-1.55V9.64c1.47.83 3.61 1.36 6 1.36s4.53-.53 6-1.36v2.81zM12 9C8.69 9 6 7.55 6 7s2.69-2 6-2 6 1.45 6 2-2.69 2-6 2z" />
+                            </svg>
+                            <span>SQL</span>
                         </div>
                     </div>
                 </div>
@@ -283,9 +374,7 @@
                             <span>Node.js</span>
                         </a>
                         <a href="https://fastapi.tiangolo.com" target="_blank" rel="noopener noreferrer" class="skill-item">
-                            <svg viewBox="0 0 24 24" fill="#009688" class="skill-logo">
-                                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5zm0 2.18l8 3.82v8c0 4.52-3.13 8.78-8 9.82-4.87-1.04-8-5.3-8-9.82V8l8-3.82z" />
-                            </svg>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/fastapi/fastapi-original.svg" alt="" class="skill-logo" loading="lazy" width="48" height="48">
                             <span>FastAPI</span>
                         </a>
                         <div class="skill-item skill-no-link">
@@ -295,9 +384,7 @@
                             <span>REST APIs</span>
                         </div>
                         <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer" class="skill-item">
-                            <svg viewBox="0 0 24 24" fill="#2496ED" class="skill-logo">
-                                <path d="M13.983 11.078h2.119c.102 0 .186.084.186.186v2.119c0 .102-.084.186-.186.186h-2.119a.186.186 0 0 1-.186-.186v-2.119c0-.102.084-.186.186-.186zM11.283 11.078h2.119c.102 0 .186.084.186.186v2.119c0 .102-.084.186-.186.186h-2.119a.186.186 0 0 1-.186-.186v-2.119c0-.102.084-.186.186-.186zM11.283 8.378h2.119c.102 0 .186.084.186.186v2.119c0 .102-.084.186-.186.186h-2.119a.186.186 0 0 1-.186-.186V8.564c0-.102.084-.186.186-.186zm-2.7 2.7h2.119c.102 0 .186.084.186.186v2.119c0 .102-.084.186-.186.186H8.583a.186.186 0 0 1-.186-.186v-2.119c0-.102.084-.186.186-.186zm-2.7 0h2.119c.102 0 .186.084.186.186v2.119c0 .102-.084.186-.186.186H5.883a.186.186 0 0 1-.186-.186v-2.119c0-.102.084-.186.186-.186zm-2.7 0h2.119c.102 0 .186.084.186.186v2.119c0 .102-.084.186-.186.186H3.183a.186.186 0 0 1-.186-.186v-2.119c0-.102.084-.186.186-.186zm-2.7 0h2.119c.102 0 .186.084.186.186v2.119c0 .102-.084.186-.186.186H.483a.186.186 0 0 1-.186-.186v-2.119c0-.102.084-.186.186-.186zm-2.7 0h2.119c.102 0 .186.084.186.186v2.119c0 .102-.084.186-.186.186h-2.119a.186.186 0 0 1-.186-.186v-2.119c0-.102.084-.186.186-.186zm-2.7 0h2.119c.102 0 .186.084.186.186v2.119c0 .102-.084.186-.186.186h-2.119a.186.186 0 0 1-.186-.186v-2.119c0-.102.084-.186.186-.186zM13.83 23.444c-7.29 0-13.2-5.91-13.2-13.2s5.91-13.2 13.2-13.2 13.2 5.91 13.2 13.2-5.91 13.2-13.2 13.2z" />
-                            </svg>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/docker/docker-original.svg" alt="" class="skill-logo" loading="lazy" width="48" height="48">
                             <span>Docker</span>
                         </a>
                         <div class="skill-item skill-no-link">
@@ -314,15 +401,11 @@
                     <h3 class="category-title">Database</h3>
                     <div class="skills-grid">
                         <a href="https://www.mysql.com" target="_blank" rel="noopener noreferrer" class="skill-item">
-                            <svg viewBox="0 0 24 24" fill="#00758F" class="skill-logo">
-                                <path d="M12 3C7.58 3 4 4.79 4 7v10c0 2.21 3.59 4 8 4s8-1.79 8-4V7c0-2.21-3.58-4-8-4zm6 14c0 .55-2.69 2-6 2s-6-1.45-6-2v-2.23c1.61.78 3.72 1.23 6 1.23s4.39-.45 6-1.23V17zm0-4.55c-1.3.95-3.58 1.55-6 1.55s-4.7-.6-6-1.55V9.64c1.47.83 3.61 1.36 6 1.36s4.53-.53 6-1.36v2.81zM12 9C8.69 9 6 7.55 6 7s2.69-2 6-2 6 1.45 6 2-2.69 2-6 2z" />
-                            </svg>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mysql/mysql-original.svg" alt="" class="skill-logo" loading="lazy" width="48" height="48">
                             <span>MySQL</span>
                         </a>
                         <a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer" class="skill-item">
-                            <svg viewBox="0 0 24 24" fill="#336791" class="skill-logo">
-                                <path d="M12.007 0C7.307 0 3.23 3.46 2.12 7.82c-.01.04-.01.07-.01.11 0 1.95.83 3.71 2.17 4.96.26.24.54.46.84.66.17.11.35.21.54.3-.08.41-.12.83-.12 1.26 0 1.98.92 3.74 2.37 4.88.23.18.48.34.74.48.16.08.33.15.51.21-.06.33-.09.67-.09 1.01 0 2.35 1.51 4.3 3.58 4.97.16.05.32.09.49.12.16.03.32.04.49.04 4.7 0 8.52-3.82 8.52-8.52 0-.25-.01-.5-.03-.75-.02-.2-.05-.4-.08-.6 1.34-1.25 2.17-3.01 2.17-4.96 0-.04-.01-.07-.01-.11C20.78 3.46 16.707 0 12.007 0zm0 2.21c3.55 0 6.64 2.61 7.21 6.07.01.04.01.08.01.12 0 1.25-.53 2.38-1.39 3.2-.24.23-.52.43-.82.6-.14.08-.28.15-.43.21.05-.33.08-.66.08-1 0-.6-.11-1.17-.3-1.7-.1-.28-.23-.55-.38-.8-.3-.48-.71-.88-1.2-1.18-.3-.18-.63-.31-.98-.38-.34-.07-.69-.1-1.05-.1-1.42 0-2.65.75-3.35 1.88-.13.2-.24.42-.33.64-.13.34-.21.7-.24 1.07-.01.1-.01.2-.01.3 0 .42.06.83.17 1.22.06.22.15.43.26.63.15.28.34.53.56.75.25.25.54.46.86.62.15.08.31.14.47.19-.07.41-.1.83-.1 1.26 0 1.25.53 2.38 1.39 3.2.24.23.52.43.82.6.14.08.28.15.43.21-.05.33-.08.66-.08 1 0 .6.11 1.17.3 1.7-.57.35-1.24.55-1.96.55-1.95 0-3.53-1.58-3.53-3.53 0-.17.01-.34.04-.51.05-.28.13-.55.24-.8.3-.67.82-1.22 1.48-1.55.23-.12.48-.2.74-.24.16-.03.32-.04.49-.04.42 0 .83.06 1.22.17.22.06.43.15.63.26.28.15.53.34.75.56.25.25.46.54.62.86.08.15.14.31.19.47-.41-.07-.83-.1-1.26-.1-1.25 0-2.38.53-3.2 1.39-.23.24-.43.52-.6.82-.08.14-.15.28-.21.43.33-.05.66-.08 1-.08 1.95 0 3.53 1.58 3.53 3.53 0 1.95-1.58 3.53-3.53 3.53-1.95 0-3.53-1.58-3.53-3.53 0-1.95 1.58-3.53 3.53-3.53z" />
-                            </svg>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/postgresql/postgresql-original.svg" alt="" class="skill-logo" loading="lazy" width="48" height="48">
                             <span>PostgreSQL</span>
                         </a>
                     </div>
@@ -363,10 +446,20 @@
                             <span>CSS</span>
                         </div>
                         <div class="skill-item skill-no-link">
-                            <svg viewBox="0 0 24 24" fill="#F7DF1E" class="skill-logo">
-                                <path d="M0 0h24v24H0V0zm22.034 18.268c-.175-1.121-.864-1.976-2.523-2.521-1.018-.321-1.503-.532-1.503-.981 0-.306.262-.519.721-.519.46 0 .825.176 1.156.557l1.706-1.074c-.58-1.002-1.444-1.614-2.859-1.614-1.848 0-3.081 1.094-3.081 2.614 0 1.632 1.001 2.224 2.583 2.836.818.314 1.258.481 1.258.927 0 .394-.367.625-.976.625-.765 0-1.229-.39-1.748-.962l-1.644 1.05c.571 1.056 1.583 1.761 3.411 1.761 2.253 0 3.753-1.185 3.753-3.1 0-.012-.001-.024-.002-.036zm-10.741-2.903c0-1.232-.765-2.001-1.884-2.001-1.119 0-1.884.766-1.884 1.999v4.204H5.324V11.23h2.2v.945c.421-.712 1.218-1.145 2.158-1.145 1.832 0 2.923 1.154 2.923 2.915v4.321h-2.312v-3.001z" />
-                            </svg>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg" alt="" class="skill-logo" loading="lazy" width="48" height="48">
                             <span>JavaScript</span>
+                        </div>
+                        <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" class="skill-item">
+                            <svg viewBox="0 0 24 24" fill="var(--color-text-primary)" class="skill-logo">
+                                <path d="M11.572 0c-.176 0-.31.001-.358.007a19.76 19.76 0 01-.364.033C7.443.346 4.25 2.185 2.228 5.012a11.875 11.875 0 00-2.119 5.243c-.096.659-.108.854-.108 1.747s.012 1.089.108 1.748c.652 4.506 3.86 8.292 8.209 9.695.779.25 1.6.422 2.534.525.363.04 1.935.04 2.299 0 1.611-.178 2.977-.577 4.323-1.264.207-.106.247-.134.219-.158-.02-.013-.9-1.193-1.955-2.62l-1.919-2.592-2.404-3.558a338.739 338.739 0 00-2.422-3.556c-.009-.002-.018 1.579-.023 3.51-.007 3.38-.01 3.515-.052 3.595a.426.426 0 01-.206.214c-.075.037-.14.044-.495.044H7.81l-.108-.068a.438.438 0 01-.157-.171l-.05-.106.006-4.703.007-4.705.072-.092a.645.645 0 01.174-.143c.096-.047.134-.051.54-.051.478 0 .558.018.682.154.035.038 1.337 1.999 2.895 4.361a10760.433 10760.433 0 004.735 7.17l1.9 2.879.096-.063a12.317 12.317 0 002.466-2.163 11.944 11.944 0 002.824-6.134c.096-.66.108-.854.108-1.748 0-.893-.012-1.088-.108-1.747-.652-4.506-3.859-8.292-8.208-9.695a12.597 12.597 0 00-2.499-.523A33.119 33.119 0 0011.573 0zm4.069 7.217c.347 0 .408.005.486.047a.473.473 0 01.237.277c.018.06.023 1.365.018 4.304l-.006 4.218-.744-1.14-.746-1.14v-3.066c0-1.982.01-3.097.023-3.15a.478.478 0 01.233-.296c.096-.05.13-.054.5-.054z"/>
+                            </svg>
+                            <span>Next.js</span>
+                        </a>
+                        <div class="skill-item skill-no-link">
+                            <svg viewBox="0 0 24 24" fill="#41B883" class="skill-logo">
+                                <path d="M24 1.61h-9.94L12 5.16 9.94 1.61H0l12 20.78zM12 14.08L5.16 2.23h4.43L12 6.41l2.41-4.18h4.43z"/>
+                            </svg>
+                            <span>Vue 3</span>
                         </div>
                     </div>
                 </div>
@@ -396,12 +489,13 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <a href="#experience" class="scroll-indicator">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </a>
+        <a href="#experience" class="scroll-indicator" aria-label="Scroll to Experience">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </a>
     </section>
 
     <!-- Experience Section -->
@@ -410,108 +504,13 @@
             <p class="section-subtitle">My Journey</p>
             <h2 class="section-title">Experience</h2>
 
-            <div class="exp-cards-grid">
-
-
-
-                <!-- Card 1: Tube Products of India -->
-                <div class="exp-card">
-                    <div class="exp-card-header exp-header-tpi">
-                        <div class="exp-header-top">
-                            <span class="exp-badge ongoing-badge">&#9679; Live</span>
-                            <span class="exp-year">2026/27</span>
-                        </div>
-                        <div class="exp-company-logo">
-                            <img src="assets/murugappa-group-chairman-steps-down-from-two-group-companies.avif" alt="Murugappa Group" class="exp-logo-img" />
-                        </div>
-                        <h3 class="exp-role">Automation &amp; AI Intern</h3>
-                        <a href="https://tiindia.com/" target="_blank" rel="noopener noreferrer"
-                            class="exp-company-name exp-company-link">Tube Products of India (Murugappa Group) ↗</a>
-                        <a href="https://maps.google.com/?q=Tube+Products+of+India+Avadi+Chennai" target="_blank"
-                            rel="noopener noreferrer" class="exp-company-sub exp-location-link">Murugappa Group &middot; Avadi</a>
-                    </div>
-                    <div class="exp-card-body">
-                        <div class="exp-stats">
-                            <div class="exp-stat">
-                                <span class="exp-stat-value">Jan 2026</span>
-                                <span class="exp-stat-label">Start</span>
-                            </div>
-                            <div class="exp-stat-divider"></div>
-                            <div class="exp-stat">
-                                <span class="exp-stat-value">Present</span>
-                                <span class="exp-stat-label">Status</span>
-                            </div>
-                            <div class="exp-stat-divider"></div>
-                            <div class="exp-stat">
-                                <span class="exp-stat-value">2+</span>
-                                <span class="exp-stat-label">Months</span>
-                            </div>
-                        </div>
-                        <p class="exp-desc">Working on automation and AI initiatives in an industrial manufacturing
-                            environment. Applying AI to real-world operational challenges and process improvement.</p>
-
-                        <div class="exp-tags">
-                            <span>Automation</span>
-                            <span>AI</span>
-                            <span>Industrial Systems</span>
-                            <span>Optimization</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2: Renault Nissan -->
-                <div class="exp-card">
-                    <div class="exp-card-header exp-header-renault">
-                        <div class="exp-header-top">
-                            <span class="exp-badge completed-badge">&#10003; Done</span>
-                            <span class="exp-year">2025</span>
-                        </div>
-                        <div class="exp-company-logo">
-                            <img src="assets/renault-logo.png" alt="Renault Logo" class="exp-logo-img" />
-                        </div>
-                        <h3 class="exp-role">Research Intern</h3>
-                        <a href="https://rntbci.in/" target="_blank" rel="noopener noreferrer"
-                            class="exp-company-name exp-company-link">Renault Nissan Technology &amp; Business Center
-                            India ↗</a>
-                        <a href="https://maps.google.com/?q=Renault+Nissan+Technology+Business+Center+India+Chennai"
-                            target="_blank" rel="noopener noreferrer" class="exp-company-sub exp-location-link">RNTBCI
-                            &middot; Chennai</a>
-                    </div>
-                    <div class="exp-card-body">
-                        <div class="exp-stats">
-                            <div class="exp-stat">
-                                <span class="exp-stat-value">Jun 2025</span>
-                                <span class="exp-stat-label">Start</span>
-                            </div>
-                            <div class="exp-stat-divider"></div>
-                            <div class="exp-stat">
-                                <span class="exp-stat-value">Dec 2025</span>
-                                <span class="exp-stat-label">End</span>
-                            </div>
-                            <div class="exp-stat-divider"></div>
-                            <div class="exp-stat">
-                                <span class="exp-stat-value">6</span>
-                                <span class="exp-stat-label">Months</span>
-                            </div>
-                        </div>
-                        <p class="exp-desc">Built <strong>PackAssist</strong> &mdash; analyzing trunk space utilization
-                            in vehicle design. Translated analytical findings for non-technical stakeholders.</p>
-                        <div class="exp-tags">
-                            <span>Data Analytics</span>
-                            <span>Space Optimization</span>
-                            <span>Automotive</span>
-                            <span>Metrics</span>
-                        </div>
-                        <div class="exp-nda-pill">Proprietary &middot; Under NDA</div>
-                    </div>
-                </div>
-
-            </div>
-            <a href="#projects" class="scroll-indicator">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </a>
+            <div class="exp-cards-grid" id="experience-list" aria-live="polite"></div>
+        </div>
+        <a href="#projects" class="scroll-indicator" aria-label="Scroll to Projects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </a>
     </section>
 
     <!-- Projects Section -->
@@ -520,112 +519,28 @@
             <p class="section-subtitle">Browse My Recent</p>
             <h2 class="section-title">Projects</h2>
 
-            <div class="projects-grid">
-                <!-- Project 1: ARIA -->
-                <div class="project-card">
-                    <div class="project-header project-header-threat">
-                        <span class="project-id">[ 01 ]</span>
-                        <div class="project-visual-box">
-                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                            </svg>
-                        </div>
-                        <h3 class="project-name">ARIA Agent</h3>
-                    </div>
-                    <div class="project-card-body">
-                        <div class="project-tags">
-                            <span>LangGraph</span>
-                            <span>Multi-Agent RAG</span>
-                        </div>
-                        <p class="project-description">
-                            Multi-agent financial RAG system that fuses document analysis with real-time news to detect
-                            hidden risks and anomalies using Llama 3 and LlamaIndex.
-                        </p>
-                        <div class="project-buttons">
-                            <a href="https://github.com/sarvesh-raam/ARIA" target="_blank" rel="noopener noreferrer"
-                                class="btn btn-outline btn-sm">Source Code</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 2: Explainable AI -->
-                <div class="project-card">
-                    <div class="project-header project-header-stock">
-                        <span class="project-id">[ 02 ]</span>
-                        <div class="project-visual-box">
-                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
-                                <path d="M12 16v-4M12 8h.01" />
-                            </svg>
-                        </div>
-                        <h3 class="project-name">Explainable AI Research</h3>
-                    </div>
-                    <div class="project-card-body">
-                        <div class="project-tags">
-                            <span>XAI</span>
-                            <span>SHAP / LIME</span>
-                        </div>
-                        <p class="project-description">
-                            Research framework evaluating the stability and clinical reliability of post-hoc
-                            explainability methods like SHAP and LIME on healthcare predictive models.
-                        </p>
-                        <div class="project-buttons">
-                            <a href="https://github.com/sarvesh-raam/Explainable-AI-Research" target="_blank"
-                                rel="noopener noreferrer" class="btn btn-outline btn-sm">Source Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: FinSense -->
-                <div class="project-card">
-                    <div class="project-header project-header-finsense">
-                        <span class="project-id">[ 03 ]</span>
-                        <div class="project-visual-box">
-                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
-                            </svg>
-                        </div>
-                        <h3 class="project-name">FinSense</h3>
-                    </div>
-                    <div class="project-card-body">
-                        <div class="project-tags">
-                            <span>Cordova</span>
-                            <span>Vanilla JS</span>
-                            <span>Chart.js</span>
-                        </div>
-                        <p class="project-description">
-                            AI-powered personal finance assistant that automatically tracks expenses in real-time by parsing bank SMS notifications with a GPay-inspired experience.
-                        </p>
-                        <div class="project-buttons">
-                            <a href="https://github.com/sarvesh-raam/finesense.app" target="_blank" rel="noopener noreferrer"
-                                class="btn btn-outline btn-sm">Source Code</a>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
+            <div class="projects-grid" id="projects-list" aria-live="polite"></div>
         </div>
-        <a href="#github" class="scroll-indicator">
+        <a href="#more-projects" class="scroll-indicator" aria-label="Scroll to More Projects">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
         </a>
     </section>
 
-    <!-- GitHub Section -->
-    <section id="github" class="section github-section">
+    <!-- More Projects Section -->
+    <section id="more-projects" class="section github-section">
         <div class="container">
-            <p class="section-subtitle">Real-Time Activity</p>
-            <h2 class="section-title">GitHub Repositories</h2>
+            <p class="section-subtitle">Also on GitHub</p>
+            <h2 class="section-title">More Projects</h2>
 
-            <div id="github-repos" class="github-repos">
-                <div class="loading">Loading repositories...</div>
-            </div>
+            <div id="more-projects-list" class="github-repos" aria-live="polite"></div>
+            <p class="more-projects-footer">
+                <a href="https://github.com/sarvesh-raam?tab=repositories" target="_blank" rel="noopener noreferrer"
+                    class="more-projects-all">See all <span data-stat="github.publicRepos">23</span> repositories on GitHub ↗</a>
+            </p>
         </div>
-        <a href="#certifications" class="scroll-indicator">
+        <a href="#certifications" class="scroll-indicator" aria-label="Scroll to Certifications">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
@@ -638,133 +553,54 @@
             <p class="section-subtitle">Verified Credentials</p>
             <h2 class="section-title">Certifications</h2>
 
-            <div class="certs-grid">
-
-                <!-- Cert: Salesforce Agentforce -->
-                <div class="cert-card">
-                    <div class="cert-card-header cert-header-sf">
-                        <div class="cert-badge cert-badge-logo">
-                            <img src="assets/salesforce-logo.png" alt="Salesforce" class="cert-logo-img">
-                        </div>
-                        <div class="cert-header-text">
-                            <span class="cert-issuer">Salesforce</span>
-                            <span class="cert-type">Professional Certification</span>
-                        </div>
-                        <div class="cert-ribbon cert-ribbon-sf">CERTIFIED</div>
-                    </div>
-                    <div class="cert-card-body">
-                        <h3 class="cert-title">
-                            <a href="https://trailheadacademy.salesforce.com/certificate/exam-agentforce-specialist---AI-201"
-                                target="_blank" rel="noopener noreferrer" class="cert-title-link">Agentforce
-                                Specialist</a>
-                        </h3>
-                        <div class="cert-meta">
-                            <div class="cert-meta-item">
-                                <span class="cert-meta-label">Issued By</span>
-                                <span class="cert-meta-value">Salesforce</span>
-                            </div>
-                            <div class="cert-meta-item">
-                                <span class="cert-meta-label">Date</span>
-                                <span class="cert-meta-value">December 2025</span>
-                            </div>
-                            <div class="cert-meta-item">
-                                <span class="cert-meta-label">Credential ID</span>
-                                <span class="cert-meta-value cert-id">#7293422</span>
-                            </div>
-                        </div>
-                        <div class="cert-tags">
-                            <span>AI Agents</span>
-                            <span>Salesforce</span>
-                            <span>Agentforce</span>
-                        </div>
-                        <div class="cert-btn-group">
-                            <a href="assets/certificate-agentforce.pdf" target="_blank" rel="noopener noreferrer"
-                                class="cert-btn cert-btn-sf">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                                View Certificate
-                            </a>
-                            <a href="https://sforce.co/verifycerts" target="_blank" rel="noopener noreferrer"
-                                class="cert-btn cert-btn-verify">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
-                                    <polyline points="22 4 12 14.01 9 11.01" />
-                                </svg>
-                                Verify
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Cert: SAP Generative AI Developer -->
-                <div class="cert-card">
-                    <div class="cert-card-header cert-header-sap">
-                        <div class="cert-badge cert-badge-logo">
-                            <img src="assets/SAP_2011_logo.svg.png" alt="SAP" class="cert-logo-img">
-                        </div>
-                        <div class="cert-header-text">
-                            <span class="cert-issuer">SAP</span>
-                            <span class="cert-type">Professional Certification</span>
-                        </div>
-                        <div class="cert-ribbon cert-ribbon-sap">CERTIFIED</div>
-                    </div>
-                    <div class="cert-card-body">
-                        <h3 class="cert-title">
-                            <a href="https://www.credly.com/badges/74e06e25-efbc-459f-bab4-5cc57c87d4e8"
-                                target="_blank" rel="noopener noreferrer" class="cert-title-link">SAP Generative AI Developer</a>
-                        </h3>
-                        <div class="cert-meta">
-                            <div class="cert-meta-item">
-                                <span class="cert-meta-label">Issued By</span>
-                                <span class="cert-meta-value">SAP</span>
-                            </div>
-                            <div class="cert-meta-item">
-                                <span class="cert-meta-label">Date</span>
-                                <span class="cert-meta-value">March 2026</span>
-                            </div>
-                            <div class="cert-meta-item">
-                                <span class="cert-meta-label">Credential ID</span>
-                                <span class="cert-meta-value cert-id">#74e06e25</span>
-                            </div>
-                        </div>
-                        <div class="cert-tags">
-                            <span>Generative AI</span>
-                            <span>SAP Business Technology Platform</span>
-                            <span>AI Development</span>
-                        </div>
-                        <div class="cert-btn-group">
-                            <a href="assets/SAP2024Certification20260319-31-hd50w5.pdf" target="_blank" rel="noopener noreferrer"
-                                class="cert-btn cert-btn-sap">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                                View Certificate
-                            </a>
-                            <a href="https://www.credly.com/badges/74e06e25-efbc-459f-bab4-5cc57c87d4e8" target="_blank" rel="noopener noreferrer"
-                                class="cert-btn cert-btn-verify">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
-                                    <polyline points="22 4 12 14.01 9 11.01" />
-                                </svg>
-                                Verify
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
+            <div class="certs-grid" id="certs-list" aria-live="polite"></div>
         </div>
-        <a href="#contact" class="scroll-indicator">
+        <a href="#achievements" class="scroll-indicator" aria-label="Scroll to Achievements">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </a>
+    </section>
+
+    <!-- Achievements & Leadership Section -->
+    <section id="achievements" class="section achievements-section">
+        <div class="container">
+            <p class="section-subtitle">Highlights</p>
+            <h2 class="section-title">Achievements &amp; Leadership</h2>
+
+            <div class="ach-board" id="achievements-list" aria-live="polite"></div>
+        </div>
+        <a href="#building" class="scroll-indicator" aria-label="Scroll to Currently Building">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </a>
+    </section>
+
+    <!-- Certificate viewer (opened from Achievements) -->
+    <dialog class="cert-viewer" id="cert-viewer" aria-labelledby="cert-viewer-caption">
+        <figure class="cert-viewer-figure">
+            <img id="cert-viewer-img" alt="" />
+            <figcaption class="cert-viewer-bar">
+                <span id="cert-viewer-caption"></span>
+                <a id="cert-viewer-open" href="#" target="_blank" rel="noopener noreferrer">Open full size ↗</a>
+            </figcaption>
+        </figure>
+        <button type="button" class="cert-viewer-close" aria-label="Close certificate">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
+        </button>
+    </dialog>
+
+    <!-- Currently Building Section -->
+    <section id="building" class="section building-section">
+        <div class="container">
+            <p class="section-subtitle">Always Shipping</p>
+            <h2 class="section-title">Currently Building</h2>
+            <p class="building-subtitle">These projects are actively in development — features confirmed, demos pending.</p>
+
+            <div class="building-grid" id="building-list" aria-live="polite"></div>
+        </div>
+        <a href="#contact" class="scroll-indicator" aria-label="Scroll to Contact">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
@@ -797,7 +633,7 @@
 
                 <!-- LinkedIn (unchanged) -->
                 <a href="https://www.linkedin.com/in/sarveshraam/" target="_blank" rel="noopener noreferrer"
-                    class="contact-segment" data-label="LinkedIn">
+                    class="contact-segment" data-label="LinkedIn" aria-label="LinkedIn">
                     <svg viewBox="0 0 24 24" fill="#0A66C2" class="brand-icon">
                         <path
                             d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -806,7 +642,7 @@
 
                 <!-- WhatsApp -->
                 <a href="https://wa.me/916385731814" target="_blank" rel="noopener noreferrer" class="contact-segment"
-                    data-label="WhatsApp">
+                    data-label="WhatsApp" aria-label="WhatsApp">
                     <svg viewBox="0 0 24 24" fill="#25D366" class="brand-icon">
                         <path
                             d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
@@ -859,10 +695,11 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Email Modal -->
     <div id="emailModal" class="phone-modal-overlay" onclick="closeEmailModalOverlay(event)">
-        <div class="phone-modal-box">
+        <div class="phone-modal-box" role="dialog" aria-modal="true" aria-label="Email address">
             <div class="phone-modal-icon phone-modal-icon--email">
                 <!-- Same filled Gmail envelope as contact bar -->
                 <svg viewBox="0 0 24 24" fill="#EA4335" width="38" height="38">
@@ -903,7 +740,7 @@
 
     <!-- Phone Modal -->
     <div id="phoneModal" class="phone-modal-overlay" onclick="closePhoneModalOverlay(event)">
-        <div class="phone-modal-box">
+        <div class="phone-modal-box" role="dialog" aria-modal="true" aria-label="Phone number">
             <div class="phone-modal-icon phone-modal-icon--phone">
                 <!-- Same filled green phone as contact bar -->
                 <svg viewBox="0 0 24 24" fill="#34A853" width="38" height="38">
@@ -941,27 +778,34 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Footer: compact sign-off (the tab bar / top pill already cover navigation) -->
     <footer class="footer">
-        <div class="container">
-            <nav class="footer-nav">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#github">GitHub</a>
-                <a href="#certifications">Certifications</a>
-                <a href="#contact">Contact</a>
-            </nav>
-            <p class="copyright">© 2026 Sarvesh Raam T K · Built with Passion</p>
-            <a href="#hero" class="back-to-top" aria-label="Back to Top">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="18 15 12 9 6 15"></polyline>
-                </svg>
-            </a>
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="#hero" class="nav-logo footer-logo" aria-label="Back to top">
+                    <span class="logo-prompt">~/</span>sarvesh<span class="logo-cursor">_</span>
+                </a>
+                <p class="footer-line"><span data-field="role">AI Engineer</span> &middot; <span data-field="status">open to opportunities</span></p>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/sarvesh-raam" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/sarveshraam/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://leetcode.com/u/sarveshraam/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+                </a>
+                <button type="button" onclick="openEmailModal()" aria-label="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                </button>
+            </div>
+            <p class="copyright">&copy; <span id="footer-year">2026</span> Sarvesh Raam T K</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=4.9"></script>
     <script>
         // ── Email Modal ───────────────────────────────────────────────────────
         function openEmailModal() {

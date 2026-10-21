@@ -1,0 +1,88 @@
+{
+  "experience": [
+    {
+      "role": "Automation & AI Intern",
+      "company": "Tube Products of India (Murugappa Group)",
+      "companyUrl": "https://tiindia.com/",
+      "location": "Murugappa Group · Avadi",
+      "locationUrl": "https://maps.google.com/?q=Tube+Products+of+India+Avadi+Chennai",
+      "start": "2026-01",
+      "end": "",
+      "yearLabel": "2026",
+      "theme": "tpi",
+      "logo": "assets/murugappa-logo.avif",
+      "logoAlt": "Murugappa Group",
+      "logoText": "",
+      "bullets": [
+        "Built Python automation for the Wet Process line, replacing manual entry for 200+ records/day (~6 hours/shift saved).",
+        "Built SQL pipelines for trend analysis across 5+ production processes, cutting report generation time ~50%."
+      ],
+      "tags": [
+        "Python",
+        "SQL",
+        "Industrial Automation",
+        "Process Optimization"
+      ],
+      "nda": false,
+      "demoUrl": "",
+      "certificate": "",
+      "visible": true
+    },
+    {
+      "role": "Software Development & AI Intern",
+      "company": "Double Devs",
+      "companyUrl": "https://doubledevs.com/",
+      "location": "Remote",
+      "locationUrl": "",
+      "start": "2025-11",
+      "end": "2026-02",
+      "yearLabel": "2025–26",
+      "theme": "dd",
+      "logo": "assets/double-devs-logo.png",
+      "logoAlt": "Double Devs",
+      "logoText": "DD",
+      "bullets": [
+        "Contributed to software development and AI projects; gained exposure to application deployment, web hosting, cloud infrastructure management, and version-controlled team workflows."
+      ],
+      "tags": [
+        "Software Development",
+        "AI",
+        "Cloud Infrastructure",
+        "Team Workflows"
+      ],
+      "nda": false,
+      "demoUrl": "",
+      "certificate": "assets/certificates/double-devs-internship.jpg",
+      "visible": true
+    },
+    {
+      "role": "Research Intern, Applied Industrial AI",
+      "company": "Renault Nissan Technology & Business Center India",
+      "companyUrl": "https://rntbci.in/",
+      "location": "RNTBCI · Chennai",
+      "locationUrl": "https://maps.google.com/?q=Renault+Nissan+Technology+Business+Center+India+Chennai",
+      "start": "2025-06",
+      "end": "2025-12",
+      "yearLabel": "2025",
+      "theme": "renault",
+      "logo": "assets/renault-logo.png",
+      "logoAlt": "Renault Logo",
+      "logoText": "",
+      "bullets": [
+        "Built **PackAssist**, a 3D trunk bin-packing / spatial optimization engine (FastAPI, React Three Fiber / Three.js) as part of a 4-member research team under an RNTBCI industry mentor.",
+        "Added NDJSON streaming layer for live progress on long-running optimization jobs.",
+        "Deployed at Renault Nissan; validated by engineering leadership, used by 40+ engineers daily."
+      ],
+      "tags": [
+        "FastAPI",
+        "Three.js",
+        "3D Packing",
+        "Agentic AI"
+      ],
+      "nda": true,
+      "demoUrl": "https://packassist-demo.web.app",
+      "certificate": "assets/certificates/rntbci-internship.jpg",
+      "visible": true
+    }
+  ]
+}

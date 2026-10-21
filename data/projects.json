@@ -1,0 +1,269 @@
+{
+  "projects": [
+    {
+      "title": "CallDojo",
+      "badge": "",
+      "description": "Voice role-play trainer for loan agents: talk to, and interrupt, an AI borrower in English, Hinglish or Tanglish, then get a scorecard. About 1.5 s to first audio; the scorer caught 7/7 misquoted rates and fees.",
+      "tags": [
+        "FastAPI",
+        "WebSockets",
+        "Groq Whisper",
+        "Edge-TTS"
+      ],
+      "theme": "amber",
+      "icon": "mic",
+      "repo": "https://github.com/sarvesh-raam/calldojo",
+      "demo": "https://calldojo.onrender.com",
+      "demoLabel": "Live Demo",
+      "video": "https://drive.google.com/file/d/1-hEmO5fhhHWwHhXwAcqHx-mJpJoq1-3h/view?usp=sharing",
+      "featured": true,
+      "visible": true
+    },
+    {
+      "title": "ARIA Agent",
+      "badge": "",
+      "description": "Autonomous Risk Intelligence Agent — fuses financial-filing anomaly scoring with live news risk into a 0–100 composite score. SSE live progress, PDF audit reports, under 30 s end-to-end.",
+      "tags": [
+        "RAG",
+        "ChromaDB",
+        "Groq LLM",
+        "FastAPI"
+      ],
+      "theme": "red",
+      "icon": "layers",
+      "repo": "https://github.com/sarvesh-raam/ARIA",
+      "demo": "https://aria-intelligence.vercel.app",
+      "demoLabel": "Live Demo",
+      "featured": true,
+      "visible": true
+    },
+    {
+      "title": "Explainable AI Research",
+      "badge": "",
+      "description": "Research framework evaluating the stability and clinical reliability of post-hoc explainability methods like SHAP and LIME on healthcare predictive models.",
+      "tags": [
+        "XAI",
+        "SHAP / LIME"
+      ],
+      "theme": "green",
+      "icon": "info",
+      "repo": "https://github.com/sarvesh-raam/explainable.ai",
+      "demo": "",
+      "demoLabel": "Live Demo",
+      "featured": true,
+      "visible": true
+    },
+    {
+      "title": "FinPilot",
+      "badge": "1st Prize",
+      "description": "PENTATHON 3.0 winner. Real-time transaction streaming, receipt parsing with line-item extraction and price-anomaly detection, PDF reports; sub-120 ms live UI updates.",
+      "tags": [
+        "Vue 3 PWA",
+        "FastAPI",
+        "WebSockets",
+        "Groq Vision"
+      ],
+      "theme": "violet",
+      "icon": "dollar",
+      "repo": "https://github.com/sarvesh-raam/FinPilot",
+      "demo": "",
+      "demoLabel": "Live Demo",
+      "featured": true,
+      "visible": true
+    },
+    {
+      "title": "Trust Flow",
+      "badge": "Final Round",
+      "description": "Customs compliance agent with an 11-node graph pipeline, human-in-the-loop review, bounding-box document provenance, US/UAE YAML rule engine, and live USITC HTS classification.",
+      "tags": [
+        "LangGraph",
+        "Docling",
+        "FastAPI",
+        "Groq Llama 3.3"
+      ],
+      "theme": "navy",
+      "icon": "shield",
+      "repo": "https://github.com/sarvesh-raam/trust-flow",
+      "demo": "",
+      "demoLabel": "Live Demo",
+      "featured": true,
+      "visible": true
+    },
+    {
+      "title": "Pluse",
+      "badge": "",
+      "description": "Distributed job platform featuring atomic job claiming (SKIP LOCKED + advisory locks + lock-token fencing), DLQ with idempotent replay, and Groq-powered failure telemetry.",
+      "tags": [
+        "FastAPI",
+        "PostgreSQL 16",
+        "WebSockets",
+        "React / TS"
+      ],
+      "theme": "slate",
+      "icon": "server",
+      "repo": "https://github.com/sarvesh-raam/pluse",
+      "demo": "",
+      "demoLabel": "Live Demo",
+      "featured": true,
+      "visible": true
+    },
+    {
+      "title": "PackAssist Demo",
+      "badge": "",
+      "description": "Interactive showcase of 3D bin-packing and spatial layout engine for automotive trunk optimization. Features client-side greedy packing and live 3D orbital inspection.",
+      "tags": [
+        "Three.js",
+        "React Three Fiber",
+        "FastAPI",
+        "Firebase"
+      ],
+      "theme": "wine",
+      "icon": "box",
+      "repo": "https://github.com/sarvesh-raam/packassist-demo",
+      "demo": "https://packassist-demo.web.app",
+      "demoLabel": "Live Demo",
+      "featured": true,
+      "visible": true
+    },
+    {
+      "title": "FlappyMind",
+      "badge": "",
+      "description": "Deep RL agent trained with PPO on flappy-bird-gymnasium using a 180-ray LIDAR observation space. Deployed in-browser via Pygbag/Wasm with a high score of 451 pipes.",
+      "tags": [
+        "PyTorch",
+        "Stable-Baselines3",
+        "Pygame",
+        "WebAssembly"
+      ],
+      "theme": "forest",
+      "icon": "gamepad",
+      "repo": "https://github.com/sarvesh-raam/flappymind",
+      "demo": "https://sarvesh-raam.itch.io/flappyai",
+      "demoLabel": "Play Game",
+      "featured": true,
+      "visible": true
+    },
+    {
+      "title": "Image Captioning",
+      "badge": "",
+      "description": "Vision-language model pairing frozen ResNet50 with custom 6-layer Transformer decoder trained on MS COCO 2014 (118K images), achieving 24.5 BLEU-4 and 81.2 CIDEr.",
+      "tags": [
+        "PyTorch",
+        "ResNet50",
+        "Transformers",
+        "FastAPI"
+      ],
+      "theme": "indigo",
+      "icon": "image",
+      "repo": "https://github.com/sarvesh-raam/image-captioning.nlp",
+      "demo": "https://image-captioning-nlp.vercel.app",
+      "demoLabel": "Live Demo",
+      "featured": true,
+      "visible": true
+    },
+    {
+      "title": "Translator App",
+      "badge": "",
+      "description": "Text and image translation across 40+ languages using DeepL API, with Tesseract.js OCR for image-to-text input and browser text-to-speech output.",
+      "tags": [
+        "Next.js",
+        "DeepL API",
+        "Tesseract.js OCR",
+        "TTS"
+      ],
+      "theme": "sky",
+      "icon": "translate",
+      "repo": "https://github.com/sarvesh-raam/translator-app",
+      "demo": "https://sarvesh-translator.vercel.app",
+      "demoLabel": "Live Demo",
+      "featured": true,
+      "visible": true
+    },
+    {
+      "title": "Self-Pruning Neural Network",
+      "badge": "",
+      "description": "Learnable sigmoid-gate pruning layer with an L1 gate penalty, trained on CIFAR-10; ~56% test accuracy across three sparsity penalties.",
+      "tags": [
+        "PyTorch",
+        "CIFAR-10",
+        "Pruning"
+      ],
+      "theme": "slate",
+      "icon": "layers",
+      "repo": "https://github.com/sarvesh-raam/self-pruning-neural-network",
+      "demo": "",
+      "demoLabel": "Live Demo",
+      "featured": false,
+      "visible": true
+    },
+    {
+      "title": "translator.nlp",
+      "badge": "",
+      "description": "English→Hindi neural machine translation: GRU Seq2Seq with Bahdanau attention, trained on ~118K IITB sentence pairs, with D3.js attention heatmaps.",
+      "tags": [
+        "TensorFlow",
+        "Keras",
+        "FastAPI",
+        "D3.js"
+      ],
+      "theme": "slate",
+      "icon": "layers",
+      "repo": "https://github.com/sarvesh-raam/translator.nlp",
+      "demo": "",
+      "demoLabel": "Live Demo",
+      "featured": false,
+      "visible": true
+    },
+    {
+      "title": "Scholarship & Financial Aid Portal",
+      "badge": "",
+      "description": "DBMS course project (team of 2, project lead): admin and student roles, eligibility checks, document upload and finance reporting.",
+      "tags": [
+        "Flask",
+        "SQLAlchemy",
+        "SQLite"
+      ],
+      "theme": "slate",
+      "icon": "layers",
+      "repo": "https://github.com/sarvesh-raam/scholarship-portal",
+      "demo": "",
+      "demoLabel": "Live Demo",
+      "featured": false,
+      "visible": true
+    },
+    {
+      "title": "BroLift",
+      "badge": "",
+      "description": "College carpooling app: ride search, seat requests, fare split, live fuel-price scraping and ride chat. Built solo in 2-week sprints.",
+      "tags": [
+        "Flask",
+        "PostgreSQL",
+        "Render"
+      ],
+      "theme": "slate",
+      "icon": "layers",
+      "repo": "https://github.com/sarvesh-raam/BroLift",
+      "demo": "",
+      "demoLabel": "Live Demo",
+      "featured": false,
+      "visible": true
+    },
+    {
+      "title": "PulseAPI",
+      "badge": "",
+      "description": "Notification priority queue on a custom MinHeap and a knapsack-based vehicle maintenance scheduler, with a shared logging middleware package.",
+      "tags": [
+        "Node.js",
+        "Express",
+        "TypeScript"
+      ],
+      "theme": "slate",
+      "icon": "layers",
+      "repo": "https://github.com/sarvesh-raam/RA2311047010177",
+      "demo": "",
+      "demoLabel": "Live Demo",
+      "featured": false,
+      "visible": true
+    }
+  ]
+}

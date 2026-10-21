@@ -1,0 +1,112 @@
+{
+  "achievements": [
+    {
+      "kind": "winner",
+      "label": "1st Prize",
+      "title": "PENTATHON 3.0 · APPATHON 3.0",
+      "org": "Cintel's NextGen AI, SRMIST",
+      "date": "Mar 2026",
+      "text": "Lead architect on a team of 3. We built FinPilot, a real-time finance app, in 24 hours.",
+      "link": "",
+      "certificate": "assets/certificates/pentathon-appathon-2026.jpg",
+      "certificateThumb": "assets/certificates/pentathon-appathon-2026-thumb.jpg",
+      "visible": true
+    },
+    {
+      "kind": "finalist",
+      "label": "Final Round",
+      "title": "Hackstrom 2026 · Track 3",
+      "org": "Deepfrog AI Solutions × SRMIST",
+      "date": "Apr 2026",
+      "text": "Reached the final round with Trust Flow, a customs-compliance agent.",
+      "link": "",
+      "certificate": "assets/certificates/hackstrom-2026.jpg",
+      "certificateThumb": "assets/certificates/hackstrom-2026-thumb.jpg",
+      "visible": true
+    },
+    {
+      "kind": "record",
+      "label": "LeetCode",
+      "title": "{{leetcode.total}} problems solved",
+      "org": "sarveshraam · Python, C, C++",
+      "date": "Live",
+      "text": "{{leetcode.medium}} Medium · {{leetcode.hard}} Hard · {{leetcode.easy}} Easy",
+      "link": "https://leetcode.com/u/sarveshraam/",
+      "certificate": "",
+      "certificateThumb": "",
+      "visible": true
+    },
+    {
+      "kind": "role",
+      "label": "Organiser",
+      "title": "ICTCIT-2025",
+      "org": "SRMIST × INFITT",
+      "date": "Sep 2025",
+      "text": "Organising team for the 3-day International Conference on Tamil Computing and Information Technology.",
+      "link": "",
+      "certificate": "",
+      "certificateThumb": "",
+      "visible": true
+    },
+    {
+      "kind": "role",
+      "label": "Creatives Lead",
+      "title": "CINTEL's Next-Gen AI",
+      "org": "SRMIST",
+      "date": "Jan 2025 – Present",
+      "text": "Lead the club’s creative work: event visuals and promotional material. Previously Social Media Designer.",
+      "link": "",
+      "certificate": "",
+      "certificateThumb": "",
+      "visible": true
+    },
+    {
+      "kind": "participant",
+      "label": "Participant",
+      "title": "Adobe University Hackathon 2026",
+      "org": "Adobe",
+      "date": "Aug 2026",
+      "text": "",
+      "link": "",
+      "certificate": "assets/certificates/adobe-university-hackathon-2026.jpg",
+      "certificateThumb": "assets/certificates/adobe-university-hackathon-2026-thumb.jpg",
+      "visible": true
+    },
+    {
+      "kind": "participant",
+      "label": "Participant",
+      "title": "Gridlock Hackathon 2.0",
+      "org": "Flipkart × HackerEarth · Team MadMax",
+      "date": "May – Jun 2026",
+      "text": "",
+      "link": "",
+      "certificate": "",
+      "certificateThumb": "",
+      "visible": true
+    },
+    {
+      "kind": "participant",
+      "label": "Participant",
+      "title": "HACK THE KNIGHT · DayZero 2.0",
+      "org": "CodeNex · 36 hours",
+      "date": "Apr 2026",
+      "text": "",
+      "link": "",
+      "certificate": "assets/certificates/dayzero-2026.jpg",
+      "certificateThumb": "assets/certificates/dayzero-2026-thumb.jpg",
+      "visible": true
+    },
+    {
+      "kind": "participant",
+      "label": "Participant",
+      "title": "Hackathon Pair Programming",
+      "org": "SRM ACM Chapter · Team Cyberknights",
+      "date": "Aug 2024",
+      "text": "",
+      "link": "",
+      "certificate": "assets/certificates/pair-programming-2024.jpg",
+      "certificateThumb": "assets/certificates/pair-programming-2024-thumb.jpg",
+      "visible": true
+    }
+  ]
+}

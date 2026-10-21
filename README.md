@@ -1,54 +1,62 @@
 # Sarvesh Raam - Portfolio Website
 
-A premium, ultra-minimal, Apple-inspired portfolio website showcasing AI engineering work.
+Live: https://sarvesh-raam.github.io/portfolio/
+
+A minimal portfolio showcasing AI engineering work. Plain HTML, CSS and JavaScript on GitHub Pages; no build step.
 
 ---
 
-## Architecture & Technical Implementation
+## How the content works
 
-This portfolio is built on a custom, lightweight, framework-agnostic architecture prioritizing rendering speed and clean state management.
+All editable content lives in `data/` as JSON. The page (`script.js`) loads these files and builds each section, so changing a value there changes the site.
 
-- **Frontend Core**: Pure HTML5, Vanilla CSS3, and Vanilla JavaScript.
-- **Data Integration**: Real-time synchronization with the GitHub REST API to dynamically fetch and display repository metrics.
-- **Performance Optimization**: Lazy loading of assets, hardware-accelerated CSS transforms for animations, and localized caching of API responses to minimize network overhead.
-- **Design System**: A custom CSS variable-driven design system enforcing consistent typography, spacing, and color palettes.
+| File | What it controls |
+|---|---|
+| `data/profile.json` | CGPA, education, About text, hero "I build …" phrases, profile card |
+| `data/projects.json` | All projects. `featured: true` = big card in **Projects**; `false` = row in **More Projects**; `visible: false` = hidden |
+| `data/experience.json` | Internships. Months are calculated from `start` / `end` (empty `end` = current role) |
+| `data/certifications.json` | Certification cards |
+| `data/achievements.json` | Achievements timeline. `{{leetcode.total}}`, `{{leetcode.medium}}` etc. insert live numbers |
+| `data/building.json` | Currently Building cards |
+| `data/stats.json` | **Generated** — live LeetCode and GitHub numbers. Don't edit by hand |
 
-## Project Case Studies
+Hero numbers are derived: internships = visible experience entries, projects = visible projects, LeetCode = `stats.json`.
 
-The portfolio highlights detailed case studies of my most impactful work:
+## Editing from the browser (admin page)
 
-1. **ARIA (Autonomous Risk Intelligence Agent)**: A high-performance RAG system utilizing LangGraph and Groq for forensic financial data analysis.
-2. **Scholarship Management Portal**: A full-stack Flask application managing financial aid distribution with real-time budget tracking.
-3. **Smart College Carpooling System**: A secure, verified commute-sharing platform for university networks.
+Open **https://sarvesh-raam.github.io/portfolio/admin/** (works on a phone too).
 
-Each case study details the system architecture, the technical challenges overcome, and the measurable impact of the solution.
+1. One-time: create a GitHub token at *GitHub → Settings → Developer settings → Fine-grained tokens*.
+   Repository access: **only `sarvesh-raam/portfolio`**. Permissions: **Contents → Read and write**.
+2. On the admin page choose **Sign In Using Access Token** and paste it.
+3. Edit, then **Save**. Each save is a commit to `main`; GitHub Pages republishes in about a minute.
 
-## Deployment & Setup
+The admin page is [Sveltia CMS](https://github.com/sveltia/sveltia-cms); its forms are defined in `admin/config.yml`.
 
-### Local Environment
-For the best experience with real-time GitHub integration, run a local server:
+## Live stats
 
-**Using Python:**
+`.github/workflows/update-stats.yml` runs `scripts/update-stats.mjs` every 6 hours. It reads your LeetCode and GitHub numbers server-side, writes `data/stats.json` only if something changed, commits it, and asks Pages to rebuild.
+For an instant refresh: *Actions → Update live stats → Run workflow*.
+
+## Running locally
+
+The page fetches `data/*.json`, so open it through a local server (not by double-clicking the file):
+
 ```bash
-python -m http.server 8000
+python -m http.server 3000
 ```
 
-**Using Node.js:**
-```bash
-npx http-server -p 8000
-```
+Then visit `http://localhost:3000`.
 
-Access the site at: `http://localhost:8000`
-
-## Repository Structure
+## Repository structure
 
 ```text
 portfolio/
-├── index.html      # Main Document Object Model structure
-├── style.css       # Design tokens and styling rules
-└── script.js       # Dynamic API fetching and DOM manipulation
+├── index.html                       # Page structure; sections are filled from data/
+├── style.css                        # Design tokens and styles
+├── script.js                        # Loads data/, renders sections, animations
+├── data/                            # Editable content (JSON)
+├── admin/                           # Browser admin page (Sveltia CMS) + config.yml
+├── scripts/update-stats.mjs         # Fetches live LeetCode/GitHub numbers
+└── .github/workflows/update-stats.yml
 ```
-
-## Future Roadmap
-- Implementation of a headless CMS for dynamic case study generation.
-- Integration of a 3D WebGL element for interactive data visualization.

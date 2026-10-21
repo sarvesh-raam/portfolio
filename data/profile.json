@@ -1,0 +1,45 @@
+{
+  "name": "Sarvesh Raam T K",
+  "role": "AI Engineer",
+  "status": "open to opportunities",
+  "cgpa": "8.24",
+  "cardDegree": "B.Tech AI (SRM) + BS DS (IITM)",
+  "srm": {
+    "degree": "B.Tech · AI",
+    "name": "SRM University",
+    "years": "2023–2027"
+  },
+  "iitm": {
+    "degree": "BS · Data Science",
+    "name": "IIT Madras",
+    "level": "Foundation Level",
+    "status": "In Progress"
+  },
+  "about": "B.Tech student in Artificial Intelligence at SRM University, also pursuing BS Data Science at IIT Madras. I specialize in building Agentic AI systems, Automated RAG pipelines, and high-performance industrial simulations. With internships at Renault Nissan, Double Devs, and Tube Products of India, I bridge the gap between complex AI research and practical industrial applications. My approach: understand the problem deeply, build autonomous agentic solutions, and ensure transparency through Explainable AI. Always curious, always building.",
+  "contact": {
+    "email": "sarveshraam5@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/sarveshraam/",
+    "github": "https://github.com/sarvesh-raam"
+  },
+  "assistantUrl": "",
+  "typing": [
+    "Agentic AI Systems",
+    "RAG Pipelines",
+    "Explainable AI",
+    "Real-time Web Apps"
+  ],
+  "cardSkills": [
+    "LangGraph",
+    "RAG Systems",
+    "Explainable AI",
+    "Python",
+    "Deep Learning"
+  ],
+  "leetcodeHandle": "sarveshraam",
+  "leetcodeFallback": {
+    "total": 206,
+    "easy": 5,
+    "medium": 153,
+    "hard": 48
+  }
+}

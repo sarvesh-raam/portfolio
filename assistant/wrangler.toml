@@ -1,0 +1,17 @@
+name = "ask-sarvesh"
+main = "worker.js"
+compatibility_date = "2025-09-01"
+
+[vars]
+# Where the assistant reads its facts from (the live portfolio)
+SITE_URL = "https://sarvesh-raam.github.io/portfolio/"
+# Pages allowed to call the assistant (comma separated, no trailing slash)
+ALLOWED_ORIGINS = "https://sarvesh-raam.github.io,http://127.0.0.1:5510,http://localhost:5510"
+
+# At most 5 questions per minute per visitor
+[[ratelimits]]
+name = "LIMITER"
+namespace_id = "1001"
+simple = { limit = 5, period = 60 }
+
+# The Groq key is a secret, not a var:  npx wrangler secret put GROQ_API_KEY

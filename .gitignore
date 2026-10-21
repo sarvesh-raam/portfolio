@@ -10,3 +10,32 @@ Thumbs.db
 dist/
 build/
 node_modules/
+
+# Private / personal working files (never publish on GitHub Pages)
+*.xlsx
+.~lock.*
+master profile.md
+/Sarvesh Raam T K Resume.pdf
+assets/Sarvesh Raam T K Resume TechVantage.pdf
+
+# Scratch / experiment files
+diff.txt
+check*.jpg
+hits_sh.svg
+hitscounter.html
+hitscounter_test*.svg
+test_komarev.svg
+laobi.svg
+visitorbadge.svg
+komarev_readme.md
+github_profile_readme_fix_jupyter/
+gnodet_source/
+sarvesh-raam-repo/
+temp_check_profile_3/
+
+# Original certificate scans (web copies live in assets/certificates/)
+CERTIFICATE/
+
+# Original logo files (web copy: assets/double-devs-logo.png)
+/double devs logo.png
+/double devs logo.webp

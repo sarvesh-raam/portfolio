@@ -1,0 +1,243 @@
+# Portfolio admin (Sveltia CMS) — open https://sarvesh-raam.github.io/portfolio/admin/
+# Sign in with "Sign In Using Access Token" (a GitHub fine-grained token with Contents: read & write on this repo).
+# Every Save is a commit to main; GitHub Pages republishes the site about a minute later.
+
+backend:
+  name: github
+  repo: sarvesh-raam/portfolio
+  branch: main
+  commit_messages:
+    update: 'content: update {{path}}'
+
+media_folder: assets/uploads
+public_folder: assets/uploads
+
+site_url: https://sarvesh-raam.github.io/portfolio/
+display_url: https://sarvesh-raam.github.io/portfolio/
+
+collections:
+  - name: content
+    label: Portfolio
+    editor:
+      preview: false
+    files:
+
+      # ---------------- Profile ----------------
+      - name: profile
+        label: Profile & numbers
+        file: data/profile.json
+        format: json
+        fields:
+          - { name: name, label: Name, widget: string }
+          - { name: role, label: Role (shown in profile.json card), widget: string }
+          - { name: status, label: Status line, widget: string }
+          - { name: cgpa, label: CGPA, widget: string, hint: 'e.g. 8.24 — updates the hero, education card and profile card' }
+          - { name: cardDegree, label: Degree line in profile.json card, widget: string }
+          - name: srm
+            label: SRM (B.Tech)
+            widget: object
+            fields:
+              - { name: degree, label: Badge, widget: string }
+              - { name: name, label: University, widget: string }
+              - { name: years, label: Years, widget: string }
+          - name: iitm
+            label: IIT Madras (BS)
+            widget: object
+            fields:
+              - { name: degree, label: Badge, widget: string }
+              - { name: name, label: Institute, widget: string }
+              - { name: level, label: Level, widget: string }
+              - { name: status, label: Status, widget: string }
+          - { name: about, label: About paragraph, widget: text }
+          - name: contact
+            label: Contact (the AI assistant gives these out)
+            widget: object
+            collapsed: true
+            fields:
+              - { name: email, label: Email, widget: string }
+              - { name: linkedin, label: LinkedIn URL, widget: string }
+              - { name: github, label: GitHub URL, widget: string }
+          - { name: assistantUrl, label: AI assistant URL, widget: string, required: false, hint: 'Your Cloudflare Worker address (see assistant/README.md). Leave empty to hide the "Ask my assistant" box.' }
+          - { name: typing, label: 'Hero "I build …" phrases', widget: list, field: { name: phrase, label: Phrase, widget: string } }
+          - { name: cardSkills, label: Skills in profile.json card, widget: list, field: { name: skill, label: Skill, widget: string } }
+          - { name: leetcodeHandle, label: LeetCode username, widget: string, hint: 'Live numbers are fetched every 6 hours from this account' }
+          - name: leetcodeFallback
+            label: LeetCode numbers (used only until the first live fetch)
+            widget: object
+            collapsed: true
+            fields:
+              - { name: total, label: Total, widget: number }
+              - { name: easy, label: Easy, widget: number }
+              - { name: medium, label: Medium, widget: number }
+              - { name: hard, label: Hard, widget: number }
+
+      # ---------------- Projects ----------------
+      - name: projects
+        label: Projects
+        file: data/projects.json
+        format: json
+        fields:
+          - name: projects
+            label: Projects
+            label_singular: Project
+            widget: list
+            summary: '{{fields.title}}'
+            hint: 'Drag to reorder. Featured = big card in "Projects"; not featured = listed under "More Projects". Turn Visible off to hide.'
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: visible, label: Show on site, widget: boolean, default: true }
+              - { name: featured, label: Featured (big card), widget: boolean, default: false }
+              - { name: badge, label: Badge (optional), widget: string, required: false, hint: 'e.g. 🏆 1st Prize' }
+              - { name: description, label: Description, widget: text, required: false }
+              - { name: tags, label: Tech tags, widget: list, required: false, field: { name: tag, label: Tag, widget: string } }
+              - { name: repo, label: Source code URL, widget: string, required: false }
+              - { name: demo, label: Demo URL, widget: string, required: false }
+              - { name: demoLabel, label: Demo button text, widget: string, default: Live Demo, required: false }
+              - { name: video, label: Demo video URL (optional), widget: string, required: false }
+              - name: theme
+                label: Card colour
+                widget: select
+                default: slate
+                options:
+                  - { label: Red, value: red }
+                  - { label: Green, value: green }
+                  - { label: Violet, value: violet }
+                  - { label: Navy, value: navy }
+                  - { label: Slate, value: slate }
+                  - { label: Wine, value: wine }
+                  - { label: Forest, value: forest }
+                  - { label: Indigo, value: indigo }
+                  - { label: Sky, value: sky }
+                  - { label: Amber, value: amber }
+              - name: icon
+                label: Icon
+                widget: select
+                default: layers
+                options: [layers, info, dollar, shield, server, box, gamepad, image, translate, mic]
+
+      # ---------------- Experience ----------------
+      - name: experience
+        label: Experience
+        file: data/experience.json
+        format: json
+        fields:
+          - name: experience
+            label: Internships
+            label_singular: Internship
+            widget: list
+            summary: '{{fields.role}} — {{fields.company}}'
+            hint: 'Months are calculated from Start/End automatically. Leave End empty for a current role.'
+            fields:
+              - { name: role, label: Role, widget: string }
+              - { name: visible, label: Show on site, widget: boolean, default: true }
+              - { name: company, label: Company, widget: string }
+              - { name: companyUrl, label: Company URL, widget: string, required: false }
+              - { name: location, label: Location line, widget: string, required: false }
+              - { name: locationUrl, label: Location map URL, widget: string, required: false }
+              - { name: start, label: Start (YYYY-MM), widget: string, pattern: ['^\d{4}-\d{2}$', 'Use YYYY-MM, e.g. 2026-01'] }
+              - { name: end, label: 'End (YYYY-MM) — leave empty for Present', widget: string, required: false }
+              - { name: yearLabel, label: Year label, widget: string, required: false, hint: 'Top-right of the card, e.g. 2025–26' }
+              - name: theme
+                label: Header colour
+                widget: select
+                options:
+                  - { label: Navy, value: tpi }
+                  - { label: Teal, value: dd }
+                  - { label: Red, value: renault }
+              - { name: logo, label: Logo image, widget: image, required: false }
+              - { name: logoAlt, label: Logo alt text, widget: string, required: false }
+              - { name: logoText, label: Text logo (if no image), widget: string, required: false }
+              - { name: bullets, label: Bullet points, widget: list, hint: 'Wrap words in **double stars** for bold', field: { name: bullet, label: Bullet, widget: text } }
+              - { name: tags, label: Tags, widget: list, required: false, field: { name: tag, label: Tag, widget: string } }
+              - { name: nda, label: 'Show "Under NDA" pill', widget: boolean, default: false }
+              - { name: demoUrl, label: Demo URL, widget: string, required: false }
+              - { name: certificate, label: Internship certificate (image or PDF), widget: file, required: false }
+
+      # ---------------- Certifications ----------------
+      - name: certifications
+        label: Certifications
+        file: data/certifications.json
+        format: json
+        fields:
+          - name: certifications
+            label: Certifications
+            label_singular: Certification
+            widget: list
+            summary: '{{fields.title}} — {{fields.issuer}}'
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: visible, label: Show on site, widget: boolean, default: true }
+              - { name: titleUrl, label: Title link, widget: string, required: false }
+              - { name: issuer, label: Issuer, widget: string }
+              - { name: type, label: Type line, widget: string }
+              - { name: ribbon, label: Ribbon text, widget: string, default: CERTIFIED }
+              - name: theme
+                label: Header colour
+                widget: select
+                options:
+                  - { label: Salesforce blue, value: sf }
+                  - { label: SAP blue, value: sap }
+                  - { label: Cisco teal, value: cisco }
+                  - { label: ISC2 green, value: isc2 }
+              - { name: logo, label: 'Logo image (leave empty for the built-in Cisco/ISC2 icon)', widget: image, required: false }
+              - name: meta
+                label: Details (3 boxes)
+                widget: list
+                max: 3
+                fields:
+                  - { name: label, label: Label, widget: string }
+                  - { name: value, label: Value, widget: string }
+              - { name: tags, label: Tags, widget: list, required: false, field: { name: tag, label: Tag, widget: string } }
+              - { name: primaryLabel, label: Main button text, widget: string, required: false }
+              - { name: primaryUrl, label: Main button URL, widget: string, required: false }
+              - { name: verifyUrl, label: Verify URL (optional), widget: string, required: false }
+
+      # ---------------- Achievements ----------------
+      - name: achievements
+        label: Achievements & Leadership
+        file: data/achievements.json
+        format: json
+        fields:
+          - name: achievements
+            label: Achievements
+            label_singular: Achievement
+            widget: list
+            summary: '{{fields.label}} — {{fields.title}}'
+            hint: 'Shown top to bottom in this order. In any text you can use {{leetcode.total}}, {{leetcode.easy}}, {{leetcode.medium}}, {{leetcode.hard}} for live numbers.'
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: visible, label: Show on site, widget: boolean, default: true }
+              - name: kind
+                label: Type
+                widget: select
+                options:
+                  - { label: Winner (gold), value: winner }
+                  - { label: Finalist, value: finalist }
+                  - { label: Role / leadership, value: role }
+                  - { label: Record / stat, value: record }
+                  - { label: Participation, value: participant }
+              - { name: label, label: Label, widget: string, hint: 'e.g. 1st Prize, Final Round, Organiser' }
+              - { name: org, label: Organiser / where, widget: string, required: false }
+              - { name: date, label: Date, widget: string, required: false, hint: 'e.g. Mar 2026' }
+              - { name: text, label: One-line detail, widget: text, required: false }
+              - { name: link, label: Link (optional), widget: string, required: false }
+              - { name: certificate, label: Certificate (image or PDF), widget: file, required: false, hint: 'Shown as a sheet on the card; an image opens in the viewer, a PDF opens in a new tab' }
+              - { name: certificateThumb, label: Certificate preview (optional small image), widget: image, required: false, hint: 'Leave empty to use the certificate itself' }
+
+      # ---------------- Currently building ----------------
+      - name: building
+        label: Currently Building
+        file: data/building.json
+        format: json
+        fields:
+          - name: building
+            label: In-progress projects
+            label_singular: Project
+            widget: list
+            summary: '{{fields.name}}'
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: visible, label: Show on site, widget: boolean, default: true }
+              - { name: description, label: Description, widget: text }
+              - { name: stack, label: Stack, widget: list, required: false, field: { name: item, label: Item, widget: string } }
+              - { name: repo, label: Repo URL, widget: string, required: false }
