@@ -1187,6 +1187,26 @@ function initAssistant(profile) {
         return frag;
     };
 
+    // "Message Sarvesh about this": jump to the contact form with the question already written
+    const handoffButton = question => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'ask-handoff';
+        button.textContent = 'Message Sarvesh about this →';
+        button.addEventListener('click', () => {
+            const name = document.getElementById('name');
+            const message = document.getElementById('message');
+            if (message && !message.value.trim()) {
+                message.value = `Hi Sarvesh, I asked the assistant on your portfolio: "${question}"\n\n`;
+            }
+            document.getElementById('contact')?.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+            const target = name && !name.value.trim() ? name : message;
+            // focus after the scroll so the page doesn't jump
+            setTimeout(() => target?.focus({ preventScroll: true }), prefersReducedMotion ? 0 : 600);
+        });
+        return button;
+    };
+
     const bubble = (role, text) => {
         const el = document.createElement('div');
         el.className = `ask-msg ask-msg--${role}`;
@@ -1210,6 +1230,7 @@ function initAssistant(profile) {
         pending.setAttribute('aria-label', 'Thinking');
 
         let answer;
+        let handoff = false;
         try {
             const res = await fetch(endpoint, {
                 method: 'POST',
@@ -1218,14 +1239,17 @@ function initAssistant(profile) {
             });
             const data = await res.json().catch(() => ({}));
             answer = data.answer || 'Sorry, something went wrong. Please try again.';
+            handoff = Boolean(data.contact);
             if (res.ok) messages.push({ role: 'assistant', content: answer });
         } catch {
             answer = 'The assistant could not be reached. Please try again in a moment.';
+            handoff = true;
         }
         if (!messages.length || messages[messages.length - 1].role === 'user') messages.pop(); // failed: forget the question
         pending.classList.remove('is-typing');
         pending.removeAttribute('aria-label');
         pending.replaceChildren(formatted(answer));
+        if (handoff) pending.append(handoffButton(question));
         log.scrollTop = log.scrollHeight;
         busy = false;
         form.classList.remove('is-busy');
