@@ -1172,10 +1172,25 @@ function initAssistant(profile) {
         return frag;
     };
 
+    // The model sometimes writes **bold** despite being asked for plain text: show it as bold, not asterisks
+    const formatted = text => {
+        const frag = document.createDocumentFragment();
+        text.split(/\*\*(.+?)\*\*/g).forEach((part, i) => {
+            if (i % 2) {
+                const strong = document.createElement('strong');
+                strong.append(linkified(part));
+                frag.append(strong);
+            } else {
+                frag.append(linkified(part));
+            }
+        });
+        return frag;
+    };
+
     const bubble = (role, text) => {
         const el = document.createElement('div');
         el.className = `ask-msg ask-msg--${role}`;
-        if (text) el.append(role === 'bot' ? linkified(text) : text);
+        if (text) el.append(role === 'bot' ? formatted(text) : text);
         log.append(el);
         log.scrollTop = log.scrollHeight;
         return el;
@@ -1210,7 +1225,7 @@ function initAssistant(profile) {
         if (!messages.length || messages[messages.length - 1].role === 'user') messages.pop(); // failed: forget the question
         pending.classList.remove('is-typing');
         pending.removeAttribute('aria-label');
-        pending.replaceChildren(linkified(answer));
+        pending.replaceChildren(formatted(answer));
         log.scrollTop = log.scrollHeight;
         busy = false;
         form.classList.remove('is-busy');
