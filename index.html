@@ -36,7 +36,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@300;400;500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=5.1">
+    <link rel="stylesheet" href="style.css?v=5.2">
 
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -290,30 +290,27 @@
                     </div>
                 </div>
             </div>
-            <!-- "Ask my assistant": shown only when profile.assistantUrl is set (Cloudflare Worker in /assistant) -->
-            <div class="ask-card" id="ask-card" hidden>
-                <div class="ask-head">
-                    <span class="ask-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
-                    </span>
-                    <div>
-                        <h3 class="ask-title">Ask my assistant</h3>
-                        <p class="ask-sub">An AI that knows only what's on this site</p>
+            <!-- "Ask my assistant": a small terminal, shown only when profile.assistantUrl is set (Cloudflare Worker in /assistant) -->
+            <div class="ask-term" id="ask-card" hidden>
+                <div class="term-bar">
+                    <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <h3 class="term-title">ask-sarvesh <span>— an AI that only knows this site</span></h3>
+                    <span class="term-status" id="ask-status"><i aria-hidden="true"></i>online</span>
+                </div>
+                <div class="term-body" id="ask-log" aria-live="polite">
+                    <p class="term-comment"># Ask anything about my work. Answers come from this page, so they can be imperfect.</p>
+                    <p class="term-comment"># Try one:</p>
+                    <div class="term-suggest" id="ask-suggestions">
+                        <button type="button">what did he build at renault?</button>
+                        <button type="button">tell me about calldojo</button>
+                        <button type="button">how many hackathons has he won?</button>
                     </div>
                 </div>
-                <div class="ask-log" id="ask-log" aria-live="polite"></div>
-                <div class="ask-suggestions" id="ask-suggestions">
-                    <button type="button">What did he build at Renault?</button>
-                    <button type="button">Tell me about CallDojo</button>
-                    <button type="button">What's his tech stack?</button>
-                </div>
-                <form class="ask-form" id="ask-form">
-                    <input id="ask-input" type="text" maxlength="300" autocomplete="off" placeholder="Ask about his work…" aria-label="Your question" />
-                    <button type="submit" class="ask-send" aria-label="Send question">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                    </button>
+                <form class="term-input" id="ask-form">
+                    <label for="ask-input" class="term-prompt"><span class="tp-user">sarvesh@portfolio</span><span class="tp-dim">:</span><span class="tp-path">~</span><span class="tp-dim">$</span></label>
+                    <input id="ask-input" type="text" maxlength="300" autocomplete="off" spellcheck="false" placeholder="type a question…" />
+                    <button type="submit" class="term-enter" aria-label="Send question">↵</button>
                 </form>
-                <p class="ask-note">AI answers can be wrong. The sections below are the source of truth.</p>
             </div>
         </div>
         <a href="#skills" class="scroll-indicator" aria-label="Scroll to Skills">
@@ -805,7 +802,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=5.1"></script>
+    <script src="script.js?v=5.2"></script>
     <script>
         // ── Email Modal ───────────────────────────────────────────────────────
         function openEmailModal() {

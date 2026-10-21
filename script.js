@@ -1187,12 +1187,27 @@ function initAssistant(profile) {
         return frag;
     };
 
-    // "Message Sarvesh about this": jump to the contact form with the question already written
+    const status = document.getElementById('ask-status');
+    const setStatus = (text, state = '') => {
+        status.lastChild.textContent = text;
+        status.dataset.state = state;
+    };
+    const scrollDown = () => { log.scrollTop = log.scrollHeight; };
+    const line = (className, ...children) => {
+        const el = document.createElement('div');
+        el.className = className;
+        el.append(...children);
+        log.append(el);
+        scrollDown();
+        return el;
+    };
+
+    // "→ message sarvesh about this": jump to the contact form with the question already written
     const handoffButton = question => {
         const button = document.createElement('button');
         button.type = 'button';
-        button.className = 'ask-handoff';
-        button.textContent = 'Message Sarvesh about this →';
+        button.className = 'term-cmd';
+        button.textContent = '→ message sarvesh about this';
         button.addEventListener('click', () => {
             const name = document.getElementById('name');
             const message = document.getElementById('message');
@@ -1207,13 +1222,59 @@ function initAssistant(profile) {
         return button;
     };
 
-    const bubble = (role, text) => {
-        const el = document.createElement('div');
-        el.className = `ask-msg ask-msg--${role}`;
-        if (text) el.append(role === 'bot' ? formatted(text) : text);
-        log.append(el);
-        log.scrollTop = log.scrollHeight;
-        return el;
+    // Braille spinner while waiting; returns a function that stops it
+    const spinner = (el, label) => {
+        const frames = '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏';
+        let i = 0;
+        const glyph = document.createElement('span');
+        glyph.className = 'term-spin';
+        glyph.textContent = frames[0];
+        const text = document.createTextNode(` ${label}`);
+        el.replaceChildren(glyph, text);
+        const timer = prefersReducedMotion ? null : setInterval(() => { glyph.textContent = frames[++i % frames.length]; }, 80);
+        return {
+            label: value => { text.data = ` ${value}`; },
+            stop: () => clearInterval(timer),
+        };
+    };
+
+    // Type the answer out, then swap in the formatted version (links, bold)
+    const typeOut = (el, text) => new Promise(resolve => {
+        if (prefersReducedMotion) {
+            el.replaceChildren(formatted(text));
+            return resolve();
+        }
+        const plain = text.replace(/\*\*/g, '');
+        const node = document.createTextNode('');
+        const caret = document.createElement('span');
+        caret.className = 'term-caret';
+        el.replaceChildren(node, caret);
+        const step = Math.max(1, Math.ceil(plain.length / 80)); // about 1.3 s whatever the length
+        let shown = 0;
+        const tick = () => {
+            shown = Math.min(plain.length, shown + step);
+            node.data = plain.slice(0, shown);
+            scrollDown();
+            if (shown < plain.length) return requestAnimationFrame(tick);
+            el.replaceChildren(formatted(text));
+            resolve();
+        };
+        requestAnimationFrame(tick);
+    });
+
+    const wait = seconds => new Promise(resolve => setTimeout(resolve, seconds * 1000));
+
+    const request = async () => {
+        try {
+            const res = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ messages: messages.slice(-6) }),
+            });
+            return { ok: res.ok, data: await res.json().catch(() => ({})) };
+        } catch {
+            return { ok: false, data: { answer: 'The assistant could not be reached. Please try again in a moment.', contact: true } };
+        }
     };
 
     const ask = async question => {
@@ -1222,38 +1283,50 @@ function initAssistant(profile) {
         busy = true;
         form.classList.add('is-busy');
         suggestions.hidden = true;
-        bubble('user', question);
-        messages.push({ role: 'user', content: question });
-        const pending = bubble('bot');
-        pending.classList.add('is-typing');
-        pending.innerHTML = '<span></span><span></span><span></span>';
-        pending.setAttribute('aria-label', 'Thinking');
+        suggestions.previousElementSibling.hidden = true; // "# Try one:"
 
-        let answer;
-        let handoff = false;
-        try {
-            const res = await fetch(endpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ messages: messages.slice(-6) }),
-            });
-            const data = await res.json().catch(() => ({}));
-            answer = data.answer || 'Sorry, something went wrong. Please try again.';
-            handoff = Boolean(data.contact);
-            if (res.ok) messages.push({ role: 'assistant', content: answer });
-        } catch {
-            answer = 'The assistant could not be reached. Please try again in a moment.';
-            handoff = true;
+        const sign = document.createElement('span');
+        sign.className = 'term-q-sign';
+        sign.textContent = '❯';
+        line('term-q', sign, ` ${question}`);
+        messages.push({ role: 'user', content: question });
+
+        const out = line('term-a');
+        const spin = spinner(out, 'thinking…');
+        setStatus('thinking', 'busy');
+
+        // The free AI plan allows only a few questions a minute: wait and retry (twice) instead of failing
+        let reply = await request();
+        for (let attempt = 0; !reply.ok && reply.data.retryAfter && attempt < 2; attempt++) {
+            setStatus('rate-limited', 'wait');
+            for (let left = reply.data.retryAfter; left > 0; left--) {
+                spin.label(`free AI plan is busy, retrying in ${left}s…`);
+                await wait(1);
+            }
+            spin.label('thinking…');
+            setStatus('thinking', 'busy');
+            reply = await request();
         }
-        if (!messages.length || messages[messages.length - 1].role === 'user') messages.pop(); // failed: forget the question
-        pending.classList.remove('is-typing');
-        pending.removeAttribute('aria-label');
-        pending.replaceChildren(formatted(answer));
-        if (handoff) pending.append(handoffButton(question));
-        log.scrollTop = log.scrollHeight;
+        spin.stop();
+
+        const answer = reply.data.answer || 'Sorry, something went wrong. Please try again.';
+        if (reply.ok) messages.push({ role: 'assistant', content: answer });
+        else messages.pop(); // failed: forget the question
+
+        out.classList.toggle('is-error', !reply.ok);
+        await typeOut(out, answer);
+        if (reply.data.contact) out.append(handoffButton(question));
+        scrollDown();
+        setStatus('online');
         busy = false;
         form.classList.remove('is-busy');
     };
+
+    // Clicking anywhere in the terminal puts the cursor in the prompt, like a real one
+    card.addEventListener('click', e => {
+        if (e.target.closest('a, button, input') || String(getSelection())) return;
+        input.focus({ preventScroll: true });
+    });
 
     form.addEventListener('submit', e => {
         e.preventDefault();

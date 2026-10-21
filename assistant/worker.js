@@ -59,7 +59,8 @@ export default {
             return json({ answer, contact }, 200, cors);
         } catch (error) {
             console.error(error);
-            return json({ answer: 'The assistant is busy right now (it runs on a free AI plan). Please try again in a minute, or message Sarvesh directly.', contact: true }, 503, cors);
+            const answer = 'The assistant is busy right now (it runs on a free AI plan). Please try again in a minute, or message Sarvesh directly.';
+            return json({ answer, contact: true, retryAfter: error.retryAfter || null }, 503, cors);
         }
     },
 };
@@ -248,6 +249,7 @@ ${facts}`;
 
 async function askGroq(env, messages) {
     let lastError;
+    let waitSeconds = Infinity; // shortest wait Groq asks for across the rate-limited models
     for (const options of MODELS) {
         const { model } = options;
         const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -264,7 +266,14 @@ async function askGroq(env, messages) {
             continue;
         }
         lastError = new Error(`${model}: HTTP ${res.status} ${(await res.text()).slice(0, 200)}`);
-        if (res.status !== 429 && res.status < 500) break; // a bad request won't succeed on the fallback either
+        if (res.status === 429) {
+            const retry = parseFloat(res.headers.get('retry-after'));
+            waitSeconds = Math.min(waitSeconds, Number.isFinite(retry) ? retry : 20);
+        } else if (res.status < 500) {
+            break; // a bad request won't succeed on the fallback either
+        }
     }
+    // Every model is rate-limited: tell the page how long to wait so it can retry by itself
+    if (Number.isFinite(waitSeconds)) lastError.retryAfter = Math.ceil(Math.min(Math.max(waitSeconds, 2), 60));
     throw lastError;
 }
