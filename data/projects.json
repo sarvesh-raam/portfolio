@@ -22,12 +22,13 @@
     {
       "title": "ARIA Agent",
       "badge": "",
-      "description": "Autonomous Risk Intelligence Agent — fuses financial-filing anomaly scoring with live news risk into a 0–100 composite score. SSE live progress, PDF audit reports, under 30 s end-to-end.",
+      "description": "Autonomous Risk Intelligence Agent: fuses financial-filing anomaly scoring with 30-day news risk into a 0–100 composite score. A hallucination guard drops any figure not in the filing; live SSE progress and PDF audit reports.",
       "tags": [
         "RAG",
         "ChromaDB",
-        "Groq LLM",
-        "FastAPI"
+        "Groq gpt-oss-120b",
+        "FastAPI",
+        "Next.js 15"
       ],
       "theme": "red",
       "icon": "layers",
@@ -40,15 +41,18 @@
     {
       "title": "Explainable AI Research",
       "badge": "",
-      "description": "Research framework evaluating the stability and clinical reliability of post-hoc explainability methods like SHAP and LIME on healthcare predictive models.",
+      "description": "Post-hoc XAI framework (SHAP, LIME) for clinical risk models on UCI Heart Disease: Random Forest reached 83.61% accuracy and 96.97% recall; feature rankings held 0.94 Spearman correlation under σ = 0.20 noise.",
       "tags": [
         "XAI",
-        "SHAP / LIME"
+        "SHAP / LIME",
+        "scikit-learn",
+        "XGBoost",
+        "Flask"
       ],
       "theme": "green",
       "icon": "info",
       "repo": "https://github.com/sarvesh-raam/explainable.ai",
-      "demo": "",
+      "demo": "https://explainable-ai-nr7p.onrender.com",
       "demoLabel": "Live Demo",
       "featured": true,
       "visible": true
@@ -74,12 +78,12 @@
     {
       "title": "Trust Flow",
       "badge": "Final Round",
-      "description": "Customs compliance agent with an 11-node graph pipeline, human-in-the-loop review, bounding-box document provenance, US/UAE YAML rule engine, and live USITC HTS classification.",
+      "description": "Customs compliance agent built by a team of 3 (I owned the pipeline and backend): a 13-node LangGraph pipeline with human-in-the-loop review, bounding-box document provenance, a US/UAE YAML rule engine and live USITC HTS classification.",
       "tags": [
         "LangGraph",
         "Docling",
         "FastAPI",
-        "Groq Llama 3.3"
+        "Groq gpt-oss-120b"
       ],
       "theme": "navy",
       "icon": "shield",
@@ -102,7 +106,7 @@
       "theme": "slate",
       "icon": "server",
       "repo": "https://github.com/sarvesh-raam/pluse",
-      "demo": "",
+      "demo": "https://sarveshraam-pulse-job-scheduler.hf.space",
       "demoLabel": "Live Demo",
       "featured": true,
       "visible": true
@@ -146,11 +150,12 @@
     {
       "title": "Image Captioning",
       "badge": "",
-      "description": "Vision-language model pairing frozen ResNet50 with custom 6-layer Transformer decoder trained on MS COCO 2014 (118K images), achieving 24.5 BLEU-4 and 81.2 CIDEr.",
+      "description": "Frozen CLIP ViT-B/16 backbone with a Transformer head and 6-layer decoder, trained on MS COCO with cross-entropy then SCST: BLEU-4 40.7 and CIDEr 135.4 on the 5,000-image Karpathy test split, with per-word attention heatmaps.",
       "tags": [
         "PyTorch",
-        "ResNet50",
+        "CLIP ViT-B/16",
         "Transformers",
+        "SCST",
         "FastAPI"
       ],
       "theme": "indigo",
@@ -164,7 +169,7 @@
     {
       "title": "Translator App",
       "badge": "",
-      "description": "Text and image translation across 40+ languages using DeepL API, with Tesseract.js OCR for image-to-text input and browser text-to-speech output.",
+      "description": "Text and image translation across 40 languages using the DeepL API, with in-browser Tesseract.js OCR for photos and browser text-to-speech output.",
       "tags": [
         "Next.js",
         "DeepL API",
@@ -175,6 +180,99 @@
       "icon": "translate",
       "repo": "https://github.com/sarvesh-raam/translator-app",
       "demo": "https://sarvesh-translator.vercel.app",
+      "demoLabel": "Live Demo",
+      "featured": true,
+      "visible": true
+    },
+    {
+      "title": "PulseOps",
+      "badge": "",
+      "theme": "slate",
+      "icon": "server",
+      "description": "Microservices observability platform: 6 FastAPI services in an order saga with OpenTelemetry tracing, Prometheus/Grafana/Loki/Jaeger, and a chaos console that kills pods and measures recovery. CI deploys to a kind cluster and verifies self-healing on every push.",
+      "tags": [
+        "Kubernetes",
+        "Prometheus",
+        "Grafana",
+        "OpenTelemetry",
+        "GitHub Actions"
+      ],
+      "repo": "https://github.com/sarvesh-raam/pulseops",
+      "demo": "",
+      "demoLabel": "Live Demo",
+      "featured": true,
+      "visible": true
+    },
+    {
+      "title": "EchoCrypt",
+      "badge": "",
+      "theme": "navy",
+      "icon": "shield",
+      "description": "End-to-end encrypted chat where the server only stores ciphertext: ECDH + AES-256-GCM per-message keys, ECDSA-signed messages, zero-knowledge accounts and WebAuthn passkeys. Two API instances behind nginx with Redis Pub/Sub; p50 delivery ≈ 9 ms.",
+      "tags": [
+        "Web Crypto",
+        "Socket.io",
+        "MongoDB",
+        "Redis",
+        "WebAuthn"
+      ],
+      "repo": "https://github.com/sarvesh-raam/echo-crypt",
+      "demo": "https://echocrypt.onrender.com",
+      "demoLabel": "Live Demo",
+      "featured": true,
+      "visible": true
+    },
+    {
+      "title": "SnapURL",
+      "badge": "",
+      "theme": "red",
+      "icon": "layers",
+      "description": "URL shortener with exactly-once click analytics over Redis Streams (consumer groups + XAUTOCLAIM crash recovery) and privacy-preserving unique-visitor counts. k6: ~2,080 req/s redirects, p99 34.6 ms, 0 failures. Self-hosted on Oracle Cloud.",
+      "tags": [
+        "FastAPI",
+        "PostgreSQL 16",
+        "Redis Streams",
+        "React",
+        "k6"
+      ],
+      "repo": "https://github.com/sarvesh-raam/snap-url",
+      "demo": "https://snapurl.duckdns.org",
+      "demoLabel": "Live Demo",
+      "featured": true,
+      "visible": true
+    },
+    {
+      "title": "CodeSynq",
+      "badge": "",
+      "theme": "indigo",
+      "icon": "layers",
+      "description": "Real-time collaborative code editor with a hand-written Operational Transformation engine (compose, transform, 3-state client), cursor presence, multi-file rooms and in-room code execution in 30+ languages. OT fuzz-tested for convergence.",
+      "tags": [
+        "Node.js",
+        "Socket.IO",
+        "React",
+        "Monaco Editor"
+      ],
+      "repo": "https://github.com/sarvesh-raam/codesynq",
+      "demo": "https://codesynq-8177.onrender.com",
+      "demoLabel": "Live Demo",
+      "featured": true,
+      "visible": true
+    },
+    {
+      "title": "ResuMatch",
+      "badge": "",
+      "theme": "green",
+      "icon": "info",
+      "description": "Resume vs job-description gap analyzer: splits a posting into weighted requirements and matches each to its best resume line with MiniLM embeddings, so every score comes with evidence. No LLM; 45-pair labelled eval against 3 baselines.",
+      "tags": [
+        "FastAPI",
+        "MiniLM / ONNX",
+        "PyMuPDF",
+        "React / TS"
+      ],
+      "repo": "https://github.com/sarvesh-raam/resumatch",
+      "demo": "https://resumatch-hx00.onrender.com",
       "demoLabel": "Live Demo",
       "featured": true,
       "visible": true
@@ -191,7 +289,7 @@
       "theme": "slate",
       "icon": "layers",
       "repo": "https://github.com/sarvesh-raam/self-pruning-neural-network",
-      "demo": "",
+      "demo": "https://sarveshraam-self-pruning-neural-network.static.hf.space/index.html",
       "demoLabel": "Live Demo",
       "featured": false,
       "visible": true
@@ -209,7 +307,7 @@
       "theme": "slate",
       "icon": "layers",
       "repo": "https://github.com/sarvesh-raam/translator.nlp",
-      "demo": "",
+      "demo": "https://translator-nlp.onrender.com",
       "demoLabel": "Live Demo",
       "featured": false,
       "visible": true
@@ -226,7 +324,7 @@
       "theme": "slate",
       "icon": "layers",
       "repo": "https://github.com/sarvesh-raam/scholarship-portal",
-      "demo": "",
+      "demo": "https://sarveshraam.pythonanywhere.com",
       "demoLabel": "Live Demo",
       "featured": false,
       "visible": true
@@ -243,7 +341,7 @@
       "theme": "slate",
       "icon": "layers",
       "repo": "https://github.com/sarvesh-raam/BroLift",
-      "demo": "",
+      "demo": "https://brolift.onrender.com",
       "demoLabel": "Live Demo",
       "featured": false,
       "visible": true
@@ -263,7 +361,7 @@
       "demo": "",
       "demoLabel": "Live Demo",
       "featured": false,
-      "visible": true
+      "visible": false
     }
   ]
 }
