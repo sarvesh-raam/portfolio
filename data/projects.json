@@ -94,20 +94,21 @@
       "visible": true
     },
     {
-      "title": "Pluse",
+      "title": "PulseOps",
       "badge": "",
-      "description": "Distributed job platform featuring atomic job claiming (SKIP LOCKED + advisory locks + lock-token fencing), DLQ with idempotent replay, and Groq-powered failure telemetry.",
+      "description": "Self-healing e-commerce backend with its own Postgres-only job queue (SKIP LOCKED claiming, lock-token fencing, DLQ with replay). Confirmed orders queue their email through a transactional outbox: with the job API and a worker killed mid-run, 10,942 orders still produced exactly 10,942 jobs. Prometheus, Grafana, Loki, Jaeger and a chaos console that kills pods and measures recovery.",
       "tags": [
         "FastAPI",
         "PostgreSQL 16",
-        "WebSockets",
-        "React / TS"
+        "Microservices",
+        "Kubernetes",
+        "Prometheus"
       ],
       "theme": "slate",
       "icon": "server",
-      "repo": "https://github.com/sarvesh-raam/pluse",
+      "repo": "https://github.com/sarvesh-raam/pulseops",
       "demo": "https://sarveshraam-pulse-job-scheduler.hf.space",
-      "demoLabel": "Live Demo",
+      "demoLabel": "Live Demo (job queue)",
       "featured": true,
       "visible": true
     },
@@ -180,25 +181,6 @@
       "icon": "translate",
       "repo": "https://github.com/sarvesh-raam/translator-app",
       "demo": "https://sarvesh-translator.vercel.app",
-      "demoLabel": "Live Demo",
-      "featured": true,
-      "visible": true
-    },
-    {
-      "title": "PulseOps",
-      "badge": "",
-      "theme": "slate",
-      "icon": "server",
-      "description": "Microservices observability platform: 6 FastAPI services in an order saga with OpenTelemetry tracing, Prometheus/Grafana/Loki/Jaeger, and a chaos console that kills pods and measures recovery. CI deploys to a kind cluster and verifies self-healing on every push.",
-      "tags": [
-        "Kubernetes",
-        "Prometheus",
-        "Grafana",
-        "OpenTelemetry",
-        "GitHub Actions"
-      ],
-      "repo": "https://github.com/sarvesh-raam/pulseops",
-      "demo": "",
       "demoLabel": "Live Demo",
       "featured": true,
       "visible": true
